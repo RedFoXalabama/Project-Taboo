@@ -1,0 +1,39 @@
+body {
+    background-color: #7261a3;
+    overflow-y: scroll;
+    font-family: "Readex Pro", sans-serif;
+}
+
+#startArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 5px;
+}
+
+#startGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 5vh;
+    font-family: "Readex Pro", sans-serif;
+    font-weight:bold;
+    
+}
+
+#tabooLogo {
+    width: 15vw;
+    height: 15vh;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+    /*background-color: #333;*/
+    color: white;
+}
