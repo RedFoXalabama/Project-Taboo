@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+    <title>Project Taboo</title>
+</head>
+<body>
+    <div>
+        <header>
+            <img src="../Assets/Taboo_logo.png" id="tabooLogo">
+        </header>
+    </div>
+    <div id="startArea">
+        <button id="startGame">INIZIA A GIOCARE</button>
+    </div>
+    <main>
+        <div id="regoleText">
+            <h1 class="RulesHead">Come si gioca?</h1>
+            <ol class="Rules">
+                <li>Preparazione del gioco
+                    <ul class="RulesElement">
+                        <li>I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco/seguente.</li>
+                    </ul> 
+                </li>
+                <li>Scopo del gioco
+                    <ul class="RulesElement">
+                        <li>Lo scopo di Taboo è quello di far indovinare alla propria squadra la parola misteriosa indicata nella parte superiore della carta, ma senza usare nella vostra descrizione nessuna delle 5 parole taboo, per non essere "buzzati" all'istante dall'altra squadra!</li>
+                    </ul>
+                </li>
+                <li>Svolgimento del gioco
+                    <ol class="RulesElement">
+                        <li>In ogni turno, una squadra deve cercare di indovinare più parole misteriose possibili in un tempo limitato, scegliendo un membro della squadra che farà da suggeritore per far indovinare le parole misteriose</li>
+                        <li>Un membro dell'altra squadra svolgerà il ruolo di buzzatore, e dovrà assicurarsi che il suggeritore non usi le parole taboo presenti sulla carta nella sua descrizione.</li>
+                        <li>La squadra di turno sceglie un compagno che faccia da suggeritore, consegnando a quest'ultimo il dispositivo usato per giocare (telefono, computer, tablet, ecc.).</li>
+                        <li>La squadra avversaria sceglie a sua volta un buzzatore (è consigliato scegliere qualcuno che sia seduto accanto al suggeritore). Il buzzatore si occuperà di premere prontamente il pulsante di BUZZ sul dispositivo in caso di "infrazione" del suggeritore.</li>
+                        <li>Quando il timer inizia, il suggeritore descrive la parola misteriosa della carta che gli viene mostrata. Se qualcuno della sua squadra indovina la parola, il suggeritore preme il pulsante INDOVINATA per passare alla carta successiva, fino allo scadere del tempo.
+                            <ol type="a">
+                                <li>Il suggeritore ha inoltre a disposizione un determinato numero di PASSO (che viene decretato in fase di creazione della partita), e può usarli per "saltare" la carta corrente e passare alla successiva senza perdere alcun punto.</li>
+                                <li> Se il suggeritore viene buzzato per aver usato una parola taboo, oppure utilizza uno o più PASSO in più rispetto al numero massimo consentito nel turno, la sua squadra perde 1 punto (-1 per ogni BUZZ e per ogni passo "irregolare" in più).</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </li>
+                <li> Le regole del perfetto "Buzzatore"
+                    <ul class="RulesElement">
+                        <li>Un “buzzatore” coi fiocchi buzza il suggeritore avversario quando questo viola una delle regole riportate di seguito:</li>
+                        <ul>
+                            <li>non si può dire nessuna delle parti che compongono le parole indicate su ciascuna carta (siano esse parole misteriose o parole Taboo: ad esempio, non si può dire “tergi” o “cristallo” se sulla carta in gioco è stampata la parola “Tergicristallo”);</li>
+                            <li>non si possono usare le forme plurali delle parole indicate, neppure nelle forme irregolari (per esempio, non si può dire “echi” per far indovinare “eco” ai propri compagni di squadra);</li>
+                            <li>non si possono fare gesti;</li>
+                            <li>non si può dire “fa rima con”, “suona come” o “assomiglia a”: sarebbe troppo facile...;</li>
+                            <li>non si possono usare abbreviazioni (ad esempio, non di può dire “TV” per suggerire “televisione”);</li>
+                            <li>tuttavia, se proprio siete disperati, potete sempre cantare;</li>
+                            <li>ma soprattutto, divertitevi: non ci sono risposte sbagliate e non ci sono penalità, quindi potete dire tutto quello che vi passa per la testa… che è il vero divertimento di ogni partita a Taboo!</li>
+                        </ul>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </main>
+    <div>
+        <footer>Diritti riservati da GAM SR</footer>
+    </div>
+    <script src="../Scripts/script.js"></script>
+</body>
+</html>

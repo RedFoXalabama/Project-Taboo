@@ -30,6 +30,7 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     border-radius: 4px;
     transition-duration: 0.4s;
+    margin: 10px;
 }
 
 #startGame:hover {
@@ -62,11 +63,20 @@ footer {
     margin-right: -8px;
 }
 
-#regoleText h1 {
-    color: #9c59bd;
+/*REGOLE DEL GIOCO*/
+
+.RulesHead {
+    color: #d176ff;
     font-size: 5em;
 }
 
-#regoleText p {
-    color: #feffec;
+.RulesElement {
+    color: #e7c6ff;
+    font-size: 0.6em;
+    line-height: 1.7em;
+}
+
+.Rules {
+    color: #e8c607;;
+    font-size: 2.6em;
 }
