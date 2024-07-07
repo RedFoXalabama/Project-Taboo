@@ -1,9 +1,15 @@
 body {
-    background-color: #3a0057;
+    background: rgb(146,28,181);
+    background: radial-gradient(circle, rgba(146,28,181,1) 0%, rgba(58,0,87,1) 100%);
+    /*background: url("./Assets/IMG_0379.png");*/
     overflow-y: scroll;
     /*overflow-x: hidden;*/
     font-family: "Readex Pro", sans-serif;
     margin-bottom: 0px;
+}
+
+main {
+    margin: 30px;
 }
 
 #startArea {
@@ -28,9 +34,11 @@ body {
     /*ASPETTI GRAFICI DEL BOTTONE*/
     background-color: #f9d402;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    border-radius: 4px;
     transition-duration: 0.4s;
     margin: 10px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #d7b701;
 }
 
 #startGame:hover {
@@ -79,4 +87,8 @@ footer {
 .Rules {
     color: #e8c607;;
     font-size: 2.6em;
+}
+
+footer {
+    color: #feffec;
 }
