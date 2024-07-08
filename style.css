@@ -47,11 +47,19 @@ main {
 }
 
 #tabooLogo {
-    width: 600px;
-    height: 248px;
+    width: 500px;
+    height: 206px;
     align-items: center;
     min-width: 400px;
     min-height: 165px;
+}
+
+#tabooLogoForm {
+    width: 250px;
+    height: 103px;
+    align-items: center;
+    min-width: 200px;
+    min-height: 83px;
 }
 
 header {
