@@ -110,3 +110,71 @@ footer {
     height: 100px;
 }
 
+/*CSS DELLA PAGINA DI CREAZIONE PARTITA*/
+
+#matchFormContainer {
+    background-color: #ba9aca; /*DA MODIFICARE*/
+    border-color: #190f31;
+    border-radius: 30px;
+    border-style: solid;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+}
+
+#matchPlayers {
+    display: flex;
+    flex-direction: row;
+}
+
+#redPlayers, #bluePlayers {
+    display: flex;
+    flex-direction: column;
+}
+
+#redPlayers input {
+    background-color: #ef9198;
+    border: 0px;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 8px;
+}
+
+#bluePlayers input {
+    background-color: #71bee7;
+    border: 0px;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 8px;
+}
+
+/*Per startMatch, sono state copiate provvisoriamente le impostazioni di startGame*/
+#startMatch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 40px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #f9d402;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 10px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #d7b701;
+}
+
+#startMatch:hover {
+    box-shadow: 0px 0px 10px 3px #e8c607;
+    transform: scale(1.05);
+}
+
