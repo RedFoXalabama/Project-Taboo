@@ -136,7 +136,7 @@ footer {
     flex-direction: column;
 }
 
-#redPlayers input {
+.redPlayersInput {
     background-color: #ef9198;
     border-top: 2.5px solid #d61622;
     border-left: 3.5px solid #f0414d;
@@ -150,12 +150,12 @@ footer {
     font-family: "Readex Pro", sans-serif;
 }
 
-#redPlayers input:focus {
+.redPlayersInput:focus {
     outline: none;
     box-shadow: 0px 0px 10px 3px #d61622;
 }
 
-#bluePlayers input {
+.bluePlayersInput {
     background-color: #71bee7;
     border-top: 2.5px solid #0178b8;
     border-left: 3.5px solid #15a0eb;
@@ -169,7 +169,7 @@ footer {
     font-family: "Readex Pro", sans-serif;
 }
 
-#bluePlayers input:focus {
+.bluePlayersInput:focus {
     outline: none;
     box-shadow: 0px 0px 10px 3px #0178b8;
 }

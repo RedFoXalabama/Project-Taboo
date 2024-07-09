@@ -21,21 +21,31 @@ turnRangeInput.addEventListener("input", (e) =>
 
 //FUNZIONE CHE CREA INPUT DEI NOMI GIOCATORE SEGUENDO L'INPUT DEL NUMERO DI GIOCATORI - NON FUNZIONANTE
 
-const redPlayers = document.querySelector('#redPlayers');
-const bluePlayers = document.querySelector('#bluePlayers');
-const numPlayers = document.querySelector('#numPlayers');
+function updatePlayerInputs() {
+    const redPlayers = document.getElementById('redPlayers');
+    const bluePlayers = document.getElementById('bluePlayers');
+    const numPlayers = document.getElementById('numPlayers').value;
 
-/*numPlayers.addEventListener("input", (e) => {
-    let i = 0;
-    while(i<=e.target.value){
-        this.redPlayersInput.createElement('input');
-        this.redPlayersInput.setAttribute('type', 'text');
-        this.redPlayersInput.setAttribute('placeholder', `Giocatore ${i} - Rosso`);
-        redPlayers.appendChild(document.createElement('input'));
-        this.bluePlayersInput = document.createElement('input');
-        this.bluePlayersInput.setAttribute('type', 'text');
-        this.bluePlayersInput.setAttribute('placeholder', `Giocatore ${i} - Blu`);
-        bluePlayers.appendChild(bluePlayersInput);
-        i++;
-    }
-})*/
+    redPlayers.innerHTML = '';
+    bluePlayers.innerHTML = '';
+
+
+for (let i=0; i < numPlayers; i++) {
+
+    const redPlayersInput = document.createElement('input');
+    redPlayersInput.className = "redPlayersInput";
+    redPlayersInput.setAttribute('type', 'text');
+    redPlayersInput.setAttribute('placeholder', `Giocatore ${i+1} - Rosso`);
+
+    const bluePlayersInput = document.createElement('input');
+    bluePlayersInput.className = "bluePlayersInput";
+    bluePlayersInput.setAttribute('type', 'text');
+    bluePlayersInput.setAttribute('placeholder', `Giocatore ${i+1} - Blu`);
+
+    redPlayers.appendChild(redPlayersInput);
+    bluePlayers.appendChild(bluePlayersInput);
+}
+}
+
+document.addEventListener('DOMContentLoaded', updatePlayerInputs);
+numPlayers.addEventListener('input', updatePlayerInputs);
