@@ -64,15 +64,16 @@ numPlayers.addEventListener('change', (e) => {
 
 //
 
-const buttonMinus = document.getElementsByClassName("button-minus");
-const buttonPlus = document.getElementsByClassName("button-plus");
+const buttonMinus = document.getElementById("button-minus");
+const buttonPlus = document.getElementById("button-plus");
 
 buttonMinus.addEventListener('click',() => {
-    alert("a");
+    numPlayers.value--;
+    updatePlayerInputs();
 })
 buttonPlus.addEventListener("click", () => {
     numPlayers.value++;
-    alert("aaa");
+    updatePlayerInputs();
 });
 
 
