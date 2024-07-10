@@ -31,44 +31,37 @@ function updatePlayerInputs() {
     bluePlayers.innerHTML = '';
 
 
-for (let i=0; i < numPlayers.value; i++) {
+    for (let i=0; i < numPlayers.value; i++) {
 
-    const redPlayersInput = document.createElement('input');
-    redPlayersInput.className = "redPlayersInput";
-    redPlayersInput.setAttribute('type', 'text');
-    redPlayersInput.setAttribute('placeholder', `Giocatore ${i+1} - Rosso`);
-
-    const bluePlayersInput = document.createElement('input');
-    bluePlayersInput.className = "bluePlayersInput";
-    bluePlayersInput.setAttribute('type', 'text');
-    bluePlayersInput.setAttribute('placeholder', `Giocatore ${i+1} - Blu`);
-
-    redPlayers.appendChild(redPlayersInput);
-    bluePlayers.appendChild(bluePlayersInput);
-}
+        const redPlayersInput = document.createElement('input');
+        redPlayersInput.className = "redPlayersInput";
+        redPlayersInput.setAttribute('type', 'text');
+        redPlayersInput.setAttribute('placeholder', `Giocatore ${i+1} - Rosso`);
+    
+        const bluePlayersInput = document.createElement('input');
+        bluePlayersInput.className = "bluePlayersInput";
+        bluePlayersInput.setAttribute('type', 'text');
+        bluePlayersInput.setAttribute('placeholder', `Giocatore ${i+1} - Blu`);
+    
+        redPlayers.appendChild(redPlayersInput);
+        bluePlayers.appendChild(bluePlayersInput);
+    }
 }
 
 document.addEventListener('DOMContentLoaded', updatePlayerInputs);
 numPlayers.addEventListener('input', updatePlayerInputs);
-
-//FUNZIONE PROVVISORIA CHE IMPEDISCE DI SETTARE UN VALORE MINORE DI 2 PER IL NUMERO DI GIOCATORI
-//PER SQUADRA
-
-numPlayers.addEventListener('change', (e) => {
-    if(e.target.value < 2) {
-        alert("I giocatori in una squadra devono essere almeno 2!");
-    e.target.value = 2;
-    updatePlayerInputs();
-    }
-})
-
-//
 
 const buttonMinus = document.getElementById("button-minus");
 const buttonPlus = document.getElementById("button-plus");
 
 buttonMinus.addEventListener('click',() => {
     numPlayers.value--;
+    //CONTROLLO VALORE MINIMO
+    if(numPlayers.value < 2) {
+        alert("I giocatori in una squadra devono essere almeno 2!");
+        numPlayers.value = 2;
+        updatePlayerInputs();
+    }
     updatePlayerInputs();
 })
 buttonPlus.addEventListener("click", () => {

@@ -112,6 +112,12 @@ footer {
 }
 
 /*CSS DELLA PAGINA DI CREAZIONE PARTITA*/
+#lobbyMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 #matchFormContainer {
     width: min-content;
