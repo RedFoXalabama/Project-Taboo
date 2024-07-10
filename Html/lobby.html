@@ -20,10 +20,11 @@
     </div>
     <main id="lobbyMain">
         <div id="matchFormContainer">
+            <button id="goBackHome"><span>TORNA ALLA HOME</span></button>
             <form id="matchForm">
                 <p>Numero di giocatori per squadra</p>
                 <input type="button" value="-" id="button-minus" data-field="quantity">
-                <input type="number" id="numPlayers" value="2" min="2" oninput="updatePlayersInputs()">
+                <input type="number" id="numPlayers" value="2" min="2" oninput="updatePlayersInputs()" readonly>
                 <input type="button" value="+" id="button-plus" data-field="quantity">
                 <!-- <button id="button-minus">-</button> -->
                 <!--<button id="button-plus">+</button> -->

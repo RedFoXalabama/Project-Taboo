@@ -112,12 +112,15 @@ footer {
 }
 
 /*CSS DELLA PAGINA DI CREAZIONE PARTITA*/
+
 #lobbyMain {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
+/*CONTENITORE DEL FORM*/
 
 #matchFormContainer {
     width: min-content;
@@ -126,6 +129,7 @@ footer {
     border-radius: 80px;
     box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     padding: 40px;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -152,6 +156,63 @@ input[type=number] {
 #matchFormContainer * {
     text-align: center;
 }
+
+/*-PULSANTE DI RITORNO ALLA HOME-*/
+
+#goBackHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #ff964f;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #fd7e29;
+    white-space: nowrap;
+}
+
+#goBackHome span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+#goBackHome span:after {
+    content: '<<';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+#goBackHome:hover {
+    box-shadow: 0px 0px 10px 3px #ff6b08;
+    transform: scale(1.05);
+}
+
+#goBackHome:hover span {
+    padding-right: 25px;
+}
+
+#goBackHome:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+/*-CONTENITORE DEI GIOCATORI E INPUT DEI GIOCATORI-*/
 
 #matchPlayers {
     display: flex;
@@ -209,9 +270,11 @@ input[type=number] {
     box-shadow: 0px 0px 10px 3px #0178b8;
 }
 
+/*-NUMERO GIOCATORI E INPUT DEL TEMPO PER TURNO-*/
+
 #numPlayers, #turnTimeInput {
     background-color: #feffec;
-    border-top: 2.5px solid;
+    border-top: 2.5px solid #000000;
     border-left: 3.5px solid #41297a;
     border-right: 3.5px solid #41297a;
     border-bottom: 3.5px solid #41297a;
@@ -223,10 +286,32 @@ input[type=number] {
     font-family: "Readex Pro", sans-serif;
 }
 
+#button-minus, #button-plus {
+    background-color: #624b9a;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border-bottom: 3.5px solid #4f358b;
+    border-radius: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-family: "Readex Pro", sans-serif;
+    color: #feffec;
+    font-weight: 1000;
+    transition-duration: 0.4s;
+}
+
+#button-minus:hover, #button-plus:hover {
+    box-shadow: 0px 0px 10px 3px #7353be;
+    transform: scale(1.2);
+}
+
 #numPlayers:focus, #turnTimeInput:focus {
     outline: none;
     box-shadow: 0px 0px 10px 3px #41297a;
 }
+
+/*-PULSANTE DI INIZIO PARTITA-*/
 
 /*Per startMatch, sono state copiate provvisoriamente le impostazioni di startGame*/
 #startMatch {
@@ -254,5 +339,17 @@ input[type=number] {
 #startMatch:hover {
     box-shadow: 0px 0px 10px 3px #e8c607;
     transform: scale(1.05);
+    animation-name: buttonAnimation;
+    animation-delay: 0s;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
 }
+
+@keyframes buttonAnimation {
+    from {transform: rotate(2deg)} to {transform: rotate(-2deg)}
+};
+
+/**/
 

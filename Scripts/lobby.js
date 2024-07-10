@@ -1,3 +1,9 @@
+//PULSANTE PER IL RITORNO ALL'HOME PAGE
+const goBackHome = document.querySelector("#goBackHome")
+goBackHome.addEventListener("click" ,() => {
+    window.location.href = "index.html"
+})
+
 //SLIDER PASSO
 
 const passRangeInput = document.querySelector('#passRangeInput');
@@ -68,6 +74,8 @@ buttonPlus.addEventListener("click", () => {
     numPlayers.value++;
     updatePlayerInputs();
 });
+
+
 
 
 
