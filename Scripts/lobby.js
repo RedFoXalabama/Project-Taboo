@@ -19,7 +19,7 @@ turnRangeInput.addEventListener("input", (e) =>
     }
 );
 
-//FUNZIONE CHE CREA INPUT DEI NOMI GIOCATORE SEGUENDO L'INPUT DEL NUMERO DI GIOCATORI - NON FUNZIONANTE
+//FUNZIONE CHE CREA INPUT DEI NOMI GIOCATORE SEGUENDO L'INPUT DEL NUMERO DI GIOCATORI
 
 function updatePlayerInputs() {
     const redPlayers = document.getElementById('redPlayers');
