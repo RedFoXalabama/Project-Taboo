@@ -22,21 +22,33 @@
         <div id="matchFormContainer">
             <form id="matchForm">
                 <p>Numero di giocatori per squadra</p>
-                <input type="number" id="numPlayers" value="2" min="2" oninput="updatePlayersInputs()">
+                <!-- <input type="button" value="-" class="button-minus" data-field="quantity"> -->
+                 <button class="button-minus">-</button>
+                <input type="number" id="numPlayers" value="2" min="2" oninput="updatePlayersInputs()" >
+                <!-- <input type="button" value="+" class="button-plus" data-field="quantity"> -->
+                <button class="button-plus">+</button>
                 <p>Nomi dei giocatori</p>
-                <div id="matchPlayers">
-                    <div id="redPlayers">
-                        <!--CONTIENE GLI INPUT APPESI CON JS-->
-                    </div>
-                    <div id="bluePlayers">
-                        <!--CONTIENE GLI INPUT APPESI CON JS-->
+
+                <div id="fullPlayersBox">
+                    <div id="matchPlayers">
+                        <div id="redPlayers">
+                            <!--CONTIENE GLI INPUT APPESI CON JS-->
+                        </div>
+                        <div id="bluePlayers">
+                            <!--CONTIENE GLI INPUT APPESI CON JS-->
+                        </div>
                     </div>
                 </div>
                 <p>Numero di turni per giocatore</p>
                 <input type="range" id="turnRangeInput" min="1" max="3" step="1" value="1">
                 <output id="turnRangeOutput">1</output>
                 <p>Tempo per turno</p>
-                <input type="time" id="turnTimeInput">
+                <!-- <input type="option" id="turnTimeInput"> -->
+                <select id="turnTimeInput">
+                    <option value="45">45 secondi</option>
+                    <option value="60">1 minuto</option>
+                    <option value="120">2 minuti</option>
+                </select>
                 <p>Numero di Passo per turno</p>
                 <input type="range" id="passRangeInput" max="10" step="1" value="0">
                 <output id="passRangeOutput">0</output>

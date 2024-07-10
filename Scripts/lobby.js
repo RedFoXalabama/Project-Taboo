@@ -21,16 +21,17 @@ turnRangeInput.addEventListener("input", (e) =>
 
 //FUNZIONE CHE CREA INPUT DEI NOMI GIOCATORE SEGUENDO L'INPUT DEL NUMERO DI GIOCATORI
 
+const numPlayers = document.getElementById("numPlayers");
+
 function updatePlayerInputs() {
     const redPlayers = document.getElementById('redPlayers');
     const bluePlayers = document.getElementById('bluePlayers');
-    const numPlayers = document.getElementById('numPlayers').value;
 
     redPlayers.innerHTML = '';
     bluePlayers.innerHTML = '';
 
 
-for (let i=0; i < numPlayers; i++) {
+for (let i=0; i < numPlayers.value; i++) {
 
     const redPlayersInput = document.createElement('input');
     redPlayersInput.className = "redPlayersInput";
@@ -49,3 +50,30 @@ for (let i=0; i < numPlayers; i++) {
 
 document.addEventListener('DOMContentLoaded', updatePlayerInputs);
 numPlayers.addEventListener('input', updatePlayerInputs);
+
+//FUNZIONE PROVVISORIA CHE IMPEDISCE DI SETTARE UN VALORE MINORE DI 2 PER IL NUMERO DI GIOCATORI
+//PER SQUADRA
+
+numPlayers.addEventListener('change', (e) => {
+    if(e.target.value < 2) {
+        alert("I giocatori in una squadra devono essere almeno 2!");
+    e.target.value = 2;
+    updatePlayerInputs();
+    }
+})
+
+//
+
+const buttonMinus = document.getElementsByClassName("button-minus");
+const buttonPlus = document.getElementsByClassName("button-plus");
+
+buttonMinus.addEventListener('click',() => {
+    alert("a");
+})
+buttonPlus.addEventListener("click", () => {
+    numPlayers.value++;
+    alert("aaa");
+});
+
+
+
