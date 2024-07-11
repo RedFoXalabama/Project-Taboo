@@ -72,10 +72,18 @@ buttonMinus.addEventListener('click',() => {
 })
 buttonPlus.addEventListener("click", () => {
     numPlayers.value++;
+    if(numPlayers.value > 10) {
+        alert("I giocatori in una squadra possono essere massimo 10!");
+        numPlayers.value = 10;
+        updatePlayerInputs();
+    }
     updatePlayerInputs();
 });
 
-
+const startMatch = document.getElementById("startMatch");
+startMatch.addEventListener("click" ,() => {
+    window.location.href = "match.html"
+})
 
 
 

@@ -347,9 +347,30 @@ input[type=number] {
     animation-timing-function: linear;
 }
 
+/*STILE DEL MATCH*/
+#matchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#cardContainer img{
+    width: 30rem;
+    height:35rem;
+    border-radius: 20px;
+}
+
+
+/*KEYFRAMES*/
 @keyframes buttonAnimation {
     from {transform: rotate(2deg)} to {transform: rotate(-2deg)}
 };
-
-/**/
 
