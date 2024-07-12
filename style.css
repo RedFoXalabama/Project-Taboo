@@ -364,8 +364,103 @@ input[type=number] {
 
 #cardContainer img{
     width: 30rem;
-    height:35rem;
+    height: 35rem;
     border-radius: 20px;
+}
+
+#matchButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    gap: 40px;
+}
+
+#tabooButton {
+    width: 100px;
+    height: 50px;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #624b9a;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #452a87;
+}
+
+#tabooButton:hover {
+    box-shadow: 0px 0px 10px 3px #5736ab;
+    transform: scale(1.05);
+}
+
+#tabooButton img {
+    width: 40px;
+    height: 40px;
+}
+
+#skipButton {
+    width: 100px;
+    height: 50px;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #f9d402;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #d7b701;
+}
+
+#skipButton:hover {
+    box-shadow: 0px 0px 10px 3px #e8c607;
+    transform: scale(1.05);
+}
+
+#skipButton svg {
+    padding-top: 5px;
+    width: 60px;
+    height: 30px;
+}
+
+#correctButton {
+    background-image: "check.svg";
+    width: 100px;
+    height: 50px;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #80ef80;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #47cb47;
+}
+
+#correctButton:hover {
+    box-shadow: 0px 0px 10px 3px #4ae94a;
+    transform: scale(1.05);
+}
+
+#correctButton svg {
+    width: 90px;
+    height: 45px;
 }
 
 
