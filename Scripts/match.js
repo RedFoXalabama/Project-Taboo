@@ -21,14 +21,20 @@ skipButton.addEventListener("click", () => {
     skipAudio.currentTime = 0;
 });
 
+//PULSANTI DI PROVA PER IL CAMBIO TURNO, SARANNO SOSTITUITI DA UNO SCRIPT AUTOMATICO
+
 const redButton = document.getElementById("redButton");
 const blueButton = document.getElementById("blueButton");
 const body = document.querySelector("body");
+const cardImg = document.getElementById("cardImg");
 redButton.addEventListener("click", () => {
     body.style.background = 'rgb(240,91,102)';
-    body.style.background = 'radial-gradient(circle, rgba(240,91,102,1) 0%, rgba(135,1,11,1) 100%)';
+    body.style.background = 'radial-gradient(circle, rgba(240,91,102,1) 0%, rgba(135,1,11,1) 68%)';
+    cardImg.setAttribute('src', '../Assets/carta_rosso.PNG');
+
 });
 blueButton.addEventListener("click", () => {
     body.style.background = 'rgb(0,166,229)';
-    body.style.background = 'radial-gradient(circle, rgba(0,166,229,1) 0%, rgba(0,38,150,1) 100%)';
+    body.style.background = 'radial-gradient(circle, rgba(0,166,229,1) 0%, rgba(0,38,150,1) 68%)';
+    cardImg.setAttribute('src', '../Assets/carta_blu.PNG')
 });
