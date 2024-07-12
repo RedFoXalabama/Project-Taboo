@@ -348,6 +348,14 @@ input[type=number] {
 }
 
 /*STILE DEL MATCH*/
+#tabooLogoMatch {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 170px;
+    height: 70px;
+}
+
 #matchContainer {
     display: flex;
     flex-direction: column;
@@ -363,9 +371,9 @@ input[type=number] {
 }
 
 #cardContainer img{
-    width: 30rem;
-    height: 35rem;
-    border-radius: 20px;
+    width: 20rem;
+    height: 25rem;
+    border-radius: 60px;
 }
 
 #matchButtonsContainer {
@@ -400,9 +408,11 @@ input[type=number] {
     transform: scale(1.05);
 }
 
-#tabooButton img {
-    width: 40px;
-    height: 40px;
+#tabooButton svg {
+    padding-top: 5px;
+    padding-right: 3.8px;
+    width: 60px;
+    height: 30px;
 }
 
 #skipButton {
