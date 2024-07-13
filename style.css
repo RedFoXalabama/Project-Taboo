@@ -368,6 +368,42 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("./Assets/carta_bordo_esterno.png");
+    background-repeat: no-repeat;
+    border-radius: 60px;
+    background-size: 100% 100%;
+    background-color: white;
+    font-size: 2rem;
+}
+#wordContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./Assets/carta_bordo_interno_blu.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+#cardWord {
+    margin: 1em 1em 0em 1em;
+}
+
+#listContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0em 1em 1em 1em;
+    margin: 0.5em 1em 1em 1em;
+}
+#cardList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline-start: 0px;
 }
 
 #cardImg {
