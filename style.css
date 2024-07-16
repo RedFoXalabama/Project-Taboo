@@ -386,7 +386,8 @@ input[type=number] {
 }
 
 #cardWord {
-    margin: 1em 1em 0em 1em;
+    margin: 1.5em 1em 0em 1em;
+    font-weight: bold;
 }
 
 #listContainer {
@@ -403,6 +404,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
     padding-inline-start: 0px;
 }
 
