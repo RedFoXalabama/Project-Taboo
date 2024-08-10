@@ -1,0 +1,23 @@
+{
+  "name": "project-taboo",
+  "version": "1.0.0",
+  "description": "Un gioco di società in cui bisogna far indovinare ai propri compagni delle parole",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedFoXalabama/Project-Taboo.git"
+  },
+  "keywords": [
+    "taboo"
+  ],
+  "author": "Gianfranco Baccarella, Angelo Calò, Manuele Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RedFoXalabama/Project-Taboo/issues"
+  },
+  "homepage": "https://github.com/RedFoXalabama/Project-Taboo#readme"
+}
