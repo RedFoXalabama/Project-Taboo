@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/RedFoXalabama/Project-Taboo/issues"
   },
-  "homepage": "https://github.com/RedFoXalabama/Project-Taboo#readme"
+  "homepage": "https://github.com/RedFoXalabama/Project-Taboo#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "http": "^0.0.1-security",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.2",
+    "nodemon": "^3.1.4"
+  }
 }
