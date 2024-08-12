@@ -40,17 +40,33 @@ blueButton.addEventListener("click", () => {
     wordContainer.style.backgroundImage = 'url("../Assets/carta_bordo_interno_blu.png")';
 });
 
-async function fetchCards() {
+async function getCards() {
     try {
-        const response = await fetch('http://127.0.0.1:3000/api/cards'); // Assicurati che l'endpoint sia corretto
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const cards = await response.json();
-        console.log(cards); // Fai qualcosa con i dati delle carte
+      const response = await fetch('http://localhost:3000/api/cards/', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        return data;
+      } else {
+        throw new Error('Request failed!');
+      }
     } catch (error) {
-        console.error('There has been a problem with your fetch operation:', error);
+      console.log(error);
     }
 }
-
-fetchCards(); // Chiama la funzione per ottenere i dati delle carte
+const cards = getCards();
+cards.then(json => {
+    const cardWord = document.getElementById("cardWord");
+    const cardList = document.getElementById("cardList");
+    cardWord.innerText = json[1].cardName;
+    for (let i = 0; i < json[0].tabooWords.length; i++) {
+        const card = document.createElement("li");
+        card.innerText = json[1].tabooWords[i];
+        cardList.appendChild(card);
+    }
+})

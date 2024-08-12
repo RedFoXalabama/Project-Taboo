@@ -388,6 +388,7 @@ input[type=number] {
 #cardWord {
     margin: 1.5em 1em 0em 1em;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 #listContainer {

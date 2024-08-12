@@ -3,11 +3,11 @@ const mongoose = require("mongoose");
 
 const Card = mongoose.model("Card", cardSchema, "Cards");
 
-exports.getAllCards = async () => {
+exports.getAllCards = async (req,res) => {
         try {
             const cards = await Card.find({});
-            return cards;
+            res.status(200).json(cards);
         } catch (err) {
-            console.log(err);
+            res.status(500).json({msg: "error", err: err})
         }
 }

@@ -16,7 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static("static"));
-app.use("/api", cardRoutes);
+app.use("/", cardRoutes);     //app.get('/api/cards', cardController.getAllCards); route più specifica
 
 //DATABASE CONNECTION
 mongoose.connect(path).then( () => { 
@@ -25,12 +25,3 @@ mongoose.connect(path).then( () => {
       console.log("Connesso sulla porta " + port);
   })
 });
-
-async function getCards() {
-    try {
-        cards = await cardController.getAllCards();
-    } catch (err) {
-        console.log(err);
-    }
-}
-getCards();
