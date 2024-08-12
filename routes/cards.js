@@ -1,7 +1,7 @@
 const express = require("express")
-const { getAllCards} = require("../controllers/cardController");
+const cardController = require("../controllers/cardController");
 const router = express.Router()
 
-router.get("/", getAllCards);
+router.get("/cards", cardController.getAllCards);
 
-module.exports = router
+module.exports = router;

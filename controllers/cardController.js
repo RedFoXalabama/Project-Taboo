@@ -1,16 +1,13 @@
-const Card = require('../models/cardModel');
+const cardSchema = require('../models/cardModel');
+const mongoose = require("mongoose");
 
-exports.getAllCards = async (req, res) => {
-    try {
-        const card = await Card.find({});
-        res.status(200).json({
-            status: 'success',
-            card: card
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: 'fail',
-            message: err
-        });
-    }
+const Card = mongoose.model("Card", cardSchema, "Cards");
+
+exports.getAllCards = async () => {
+        try {
+            const cards = await Card.find({});
+            return cards;
+        } catch (err) {
+            console.log(err);
+        }
 }

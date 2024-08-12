@@ -15,4 +15,4 @@ const cardSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("Cards", cardSchema); //Cards è il nome della collection in MongoDB
+module.exports = cardSchema; //Cards è il nome della collection in MongoDB

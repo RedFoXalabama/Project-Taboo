@@ -39,3 +39,18 @@ blueButton.addEventListener("click", () => {
     //wordContainer.setAttribute('background-image', 'url("../Assets/carta_bordo_interno_blu.png")');
     wordContainer.style.backgroundImage = 'url("../Assets/carta_bordo_interno_blu.png")';
 });
+
+async function fetchCards() {
+    try {
+        const response = await fetch('http://127.0.0.1:3000/api/cards'); // Assicurati che l'endpoint sia corretto
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const cards = await response.json();
+        console.log(cards); // Fai qualcosa con i dati delle carte
+    } catch (error) {
+        console.error('There has been a problem with your fetch operation:', error);
+    }
+}
+
+fetchCards(); // Chiama la funzione per ottenere i dati delle carte
