@@ -1,28 +1,7 @@
-//RIPRODUZIONE SOUND EFFECT PER RISPOSTA CORRETTA
-
-const correctButton = document.getElementById("correctButton");
-const correctAudio = new Audio("../Assets/gotitem.mp3");
-correctButton.addEventListener("click", () => {
-    correctAudio.play();
-    correctAudio.currentTime = 0;
-});
-//RIPRODUZIONE SOUND EFFECT PER RISPOSTA SBAGLIATA
-//const tabooButton = document.getElementById("tabooButton");
-//const tabooAudio = new Audio("../Assets/taboo_button_sfx.mp3");
-/*tabooButton.addEventListener("click", () => {
-    tabooAudio.play();
-    tabooAudio.currentTime = 0;
-});*/
-//RIPODUZIONE SOUND EFFECT PER SKIP
-const skipButton = document.getElementById("skipButton");
-const skipAudio = new Audio("../Assets/skip_button_sfx.mp3");
-skipButton.addEventListener("click", () => {
-    skipAudio.play();
-    skipAudio.currentTime = 0;
-});
+//VARIABILI
+let cardsArray = [];
 
 //PULSANTI DI PROVA PER IL CAMBIO TURNO, SARANNO SOSTITUITI DA UNO SCRIPT AUTOMATICO
-
 const redButton = document.getElementById("redButton");
 const blueButton = document.getElementById("blueButton");
 const body = document.querySelector("body");
@@ -40,7 +19,8 @@ blueButton.addEventListener("click", () => {
     wordContainer.style.backgroundImage = 'url("../Assets/carta_bordo_interno_blu.png")';
 });
 
-async function getCards() {
+//FUNZIONE PER OTTENERE LE CARTE DAL DATABASE
+async function getCardsFromServer() {
     try {
       const response = await fetch('http://localhost:3000/api/cards/', {
         method: 'GET',
@@ -49,9 +29,10 @@ async function getCards() {
         },
       });
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        return data;
+        //const data = await response.json();
+        //console.log(data);
+        //return data;
+        return await response.json();
       } else {
         throw new Error('Request failed!');
       }
@@ -59,14 +40,76 @@ async function getCards() {
       console.log(error);
     }
 }
-const cards = getCards();
-cards.then(json => {
-    const cardWord = document.getElementById("cardWord");
-    const cardList = document.getElementById("cardList");
-    cardWord.innerText = json[1].cardName;
-    for (let i = 0; i < json[0].tabooWords.length; i++) {
-        const card = document.createElement("li");
-        card.innerText = json[1].tabooWords[i];
-        cardList.appendChild(card);
+const cards = getCardsFromServer();
+
+//FUNZIONI PER OPERARE SULLE CARTE
+
+//CREAZIONE DI UN ARRAY DI CARTE DUPLICATO SU CUI LAVORARE
+function cardsFromJsonToArray(json, array) {
+  return new Promise((resolve, reject) => {
+    json.then(json => { 
+      for (let i = 0; i < json.length; i++) {
+        if(i==0) { //rimuovo la prima carta vuota
+          continue;
+        }
+        array.push(json[i]);
+      }
+      console.log("From Json to Array: ");
+      console.log(array);
+      resolve(array);
+    }).catch(error => reject(error));
+  });
+}
+//SHUFFLING DELLE CARTE
+function shuffleCards(array){
+  array.sort(() => Math.random() - 0.5);
+  console.log("Shuffled Cards: ");
+  console.log(array);
+}
+//FUNZIONE PER PRELEVARE UNA CARTA DAL MAZZO
+function drawCard(array) {
+  return array.pop();
+}
+//FUNZIONE PER VISUALIZZARE UNA NUOVA CARTA
+function showNewCard(card) {
+  const cardWord = document.getElementById("cardWord");
+  const cardList = document.getElementById("cardList");
+  cardWord.innerText = card.cardName;
+    for (let i = 0; i < card.tabooWords.length; i++) {
+        let tabooListElement = document.getElementById("cardListElement"+i);
+        tabooListElement.innerText = card.tabooWords[i];
     }
-})
+}
+
+//OPERAZIONI SULLE CARTE
+cardsFromJsonToArray(cards, cardsArray).then(() => {
+  shuffleCards(cardsArray);
+}).catch(error => console.error(error));
+
+
+//BUTTONS PER GESTIRE LA PARTITA
+const correctButton = document.getElementById("correctButton");
+const correctAudio = new Audio("../Assets/gotitem.mp3");
+const skipButton = document.getElementById("skipButton");
+const skipAudio = new Audio("../Assets/skip_button_sfx.mp3");
+//const tabooButton = document.getElementById("tabooButton");
+//const tabooAudio = new Audio("../Assets/taboo_button_sfx.mp3");
+
+//FUNZIONI PER GESTIRE I PULSANTI
+correctButton.addEventListener("click", () => {
+    showNewCard(drawCard(cardsArray));
+    correctAudio.play();
+    correctAudio.currentTime = 0;
+});
+
+/*tabooButton.addEventListener("click", () => {
+    tabooAudio.play();
+    tabooAudio.currentTime = 0;
+    showNewCard(drawCard(cardsArray));
+});*/
+
+skipButton.addEventListener("click", () => {
+    skipAudio.play();
+    skipAudio.currentTime = 0;
+    showNewCard(drawCard(cardsArray));
+});
