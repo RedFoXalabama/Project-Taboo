@@ -374,6 +374,8 @@ input[type=number] {
     background-size: 100% 100%;
     background-color: white;
     font-size: 2rem;
+    width: 400px;
+    height: fit-content;
 }
 #wordContainer {
     display: flex;
@@ -383,12 +385,16 @@ input[type=number] {
     background-image: url("../Assets/carta_bordo_interno_blu.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    width: 400px;
+    padding-bottom: 1em;
 }
 
 #cardWord {
-    margin: 1.5em 1em 0em 1em;
+    margin: 1.5em 1em 1em 1em;
     font-weight: bold;
+    text-align: center;
     text-transform: uppercase;
+    /*white-space: nowrap; SERVE PER METTERE LA PAROLA SU UN SOLO RIGO, DA DISCUTERE*/
 }
 
 #listContainer {
@@ -396,7 +402,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0em 1em 1em 1em;
+    padding: 0em 0em 0em 0em;
     margin: 0.5em 1em 1em 1em;
 }
 #cardList {
