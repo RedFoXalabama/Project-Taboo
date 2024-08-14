@@ -3,9 +3,8 @@ const express = require("express");
 const cors = require('cors');
 const mongoose = require("mongoose");
 const cardRoutes = require("./routes/cards");
-const cardSchema = require("./models/cardModel");
-const cardController = require("./controllers/cardController");
-let cards = [];
+const bodyParser = require("body-parser");
+const ruleRoutes = require("./routes/rules");
 
 //VARIABILI
 const port = 3000;
@@ -16,7 +15,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.static("static"));
+app.use(bodyParser.urlencoded({extended: true}))
 app.use("/", cardRoutes);     //app.get('/api/cards', cardController.getAllCards); route più specifica
+app.use("/", ruleRoutes)
 
 //DATABASE CONNECTION
 mongoose.connect(path).then( () => { 
