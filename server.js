@@ -9,7 +9,7 @@ let cards = [];
 
 //VARIABILI
 const port = 3000;
-const path = "mongodb+srv://gianfrancobaccarella:project-taboo-password@project-taboo-db.oajpkwv.mongodb.net/Project-Taboo-DB?retryWrites=true&w=majority&appName=Project-Taboo-DB";
+const path = "mongodb+srv://client:project-taboo-password@project-taboo-db.oajpkwv.mongodb.net/Project-Taboo-DB?retryWrites=true&w=majority&appName=Project-Taboo-DB";
 const app = express();
 
 //MIDDLEWARE

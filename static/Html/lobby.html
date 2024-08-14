@@ -20,7 +20,7 @@
     <main id="lobbyMain">
         <div id="matchFormContainer">
             <button id="goBackHome"><span>TORNA ALLA HOME</span></button>
-            <form id="matchForm">
+            <form id="matchForm" method="post" action="">
                 <p>Numero di giocatori per squadra</p>
                 <input type="button" value="-" id="button-minus" data-field="quantity">
                 <input type="number" id="numPlayers" value="2" min="2" oninput="updatePlayersInputs()" readonly>
