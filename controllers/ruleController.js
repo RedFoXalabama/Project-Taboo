@@ -16,7 +16,7 @@ exports.addRules = async (req,res) => {
             blueScore: req.body.blueScore
         });
         rules.save();
-        res.redirect("/");
+        res.redirect("../match.html");
     } catch (err) {
         res.status(500).json({msg: "error", err: err})
     }

@@ -1,7 +1,7 @@
 body {
     background: rgb(146,28,181);
     background: radial-gradient(circle, rgba(146,28,181,1) 0%, rgba(58,0,87,1) 100%);
-    /*background: url("./Assets/IMG_0379.png");*/
+    /*background: url("./assets/IMG_0379.png");*/
     overflow-y: scroll;
     /*overflow-x: hidden;*/
     font-family: "Readex Pro", sans-serif;
@@ -368,7 +368,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("./Assets/carta_bordo_esterno.png");
+    background-image: url("./assets/carta_bordo_esterno.png");
     background-repeat: no-repeat;
     border-radius: 60px;
     background-size: 100% 100%;
@@ -382,7 +382,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../Assets/carta_bordo_interno_blu.png");
+    background-image: url("../assets/carta_bordo_interno_blu.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 400px;

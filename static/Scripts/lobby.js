@@ -86,4 +86,20 @@ startMatch.addEventListener("click" ,() => {
 })
 
 
-
+async function postRuleToServer() {
+    try {
+      const response = await fetch('http://localhost:3000/api/rules/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+      if (response.ok) {
+        return await response.json();
+      } else {
+        throw new Error('Request failed!');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+}

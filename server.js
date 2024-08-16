@@ -16,8 +16,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("static"));
 app.use(bodyParser.urlencoded({extended: true}))
-app.use("/", cardRoutes);     //app.get('/api/cards', cardController.getAllCards); route più specifica
-app.use("/", ruleRoutes)
+app.use("/api/cards", cardRoutes);     //app.get('/api/cards', cardController.getAllCards); route più specifica
+app.use("/api/rules", ruleRoutes);
+
 
 //DATABASE CONNECTION
 mongoose.connect(path).then( () => { 
