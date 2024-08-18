@@ -7,7 +7,7 @@ function Rules(props) {
             <Paper id="rulePaper">
                 <h2 className="Rules">{props.item.title}</h2>
                 <ul className="RulesElement">
-                    <li></li>
+                    {handleElementList(props.item.elementList)}
                 </ul>
 
             </Paper>
@@ -16,14 +16,10 @@ function Rules(props) {
     )
 }
 
-/*function elementList(props) {
-    return (
-        <ul>
-            {props.item.elementList.map((element, index) => {
-                return <li key={index}>{element}</li>
-            })}
-        </ul>
-    )
-}*/
+function handleElementList(elementList) {
+    return Object.values(elementList).map((element, index) => {
+        return <li key={index}>{element}</li>
+    });
+}
 
 export default Rules;
