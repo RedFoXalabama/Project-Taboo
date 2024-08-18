@@ -7,17 +7,16 @@ function Rules(props) {
             <Paper id="rulePaper">
                 <h2 className="Rules">{props.item.title}</h2>
                 <ul className="RulesElement">
-                    <li>{props.item.element1}</li>
-                    <li>{props.item.element2}</li>
-
+                    <li></li>
                 </ul>
+
             </Paper>
             <img></img>
         </div>
     )
 }
 
-function elementList(props) {
+/*function elementList(props) {
     return (
         <ul>
             {props.item.elementList.map((element, index) => {
@@ -25,6 +24,6 @@ function elementList(props) {
             })}
         </ul>
     )
-}
+}*/
 
 export default Rules;

@@ -2,32 +2,53 @@
     {
         "id": 1,
         "title": "Preparazione del gioco",
-        "element1": "I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco/seguente."
+        "elementList": {
+            "element1": "I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco/seguente."
+        }
     },
     {
         "id": 2,
         "title": "Scopo del gioco",
-        "element1": "Lo scopo di Taboo è quello di far indovinare alla propria squadra la parola misteriosa indicata nella parte superiore della carta, ma senza usare nella vostra descrizione nessuna delle 5 parole taboo, per non essere \"buzzati\" all'istante dall'altra squadra!"
+        "elementList": {
+            "element1": "Lo scopo di Taboo è quello di far indovinare alla propria squadra la parola misteriosa indicata nella parte superiore della carta, ma senza usare nella vostra descrizione nessuna delle 5 parole taboo, per non essere \"buzzati\" all'istante dall'altra squadra!"
+        }
     },
     {
         "id": 3,
         "title": "Svolgimento del gioco",
-        "element1": "In ogni turno, una squadra deve cercare di indovinare più parole misteriose possibili in un tempo limitato, scegliendo un membro della squadra che farà da suggeritore per far indovinare le parole misteriose",
-        "element2": "Un membro dell'altra squadra svolgerà il ruolo di buzzatore, e dovrà assicurarsi che il suggeritore non usi le parole taboo presenti sulla carta nella sua descrizione."
+        "elementList": {
+            "element1": "In ogni turno, una squadra deve cercare di indovinare più parole misteriose possibili in un tempo limitato, scegliendo un membro della squadra che farà da suggeritore per far indovinare le parole misteriose",
+            "element2": "Un membro dell'altra squadra svolgerà il ruolo di buzzatore, e dovrà assicurarsi che il suggeritore non usi le parole taboo presenti sulla carta nella sua descrizione.",
+            "element3": "La squadra di turno sceglie un compagno che faccia da suggeritore, consegnando a quest'ultimo il dispositivo usato per giocare (telefono, computer, tablet, ecc.).",
+            "element4": "La squadra avversaria sceglie a sua volta un buzzatore (è consigliato scegliere qualcuno che sia seduto accanto al suggeritore). Il buzzatore si occuperà di premere prontamente il pulsante di BUZZ sul dispositivo in caso di \"infrazione\" del suggeritore.",
+            "element5": "Quando il timer inizia, il suggeritore descrive la parola misteriosa della carta che gli viene mostrata. Se qualcuno della sua squadra indovina la parola, il suggeritore preme il pulsante INDOVINATA per passare alla carta successiva, fino allo scadere del tempo.",
+            "element6": "Il suggeritore ha inoltre a disposizione un determinato numero di PASSO (che viene decretato in fase di creazione della partita), e può usarli per \"saltare\" la carta corrente e passare alla successiva senza perdere alcun punto.",
+            "element7": "Se il suggeritore viene buzzato per aver usato una parola taboo, oppure utilizza uno o più PASSO in più rispetto al numero massimo consentito nel turno, la sua squadra perde 1 punto (-1 per ogni BUZZ e per ogni passo \"irregolare\" in più)."
+        }
     },
     {
         "id": 4,
-        "title": "Le regole del perfetto buzzatore",
+        "title": "Azioni vietate",
         "elementList": {
-            "element1": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+            "element1": "Non si può dire nessuna delle parti che compongono le parole indicate su ciascuna carta (siano esse parole misteriose o parole Taboo: ad esempio, non si può dire “tergi” o “cristallo” se sulla carta in gioco è stampata la parola “Tergicristallo”).",
+            "element2": "Non si possono usare le forme plurali delle parole indicate, neppure nelle forme irregolari (per esempio, non si può dire “echi” per far indovinare “eco” ai propri compagni di squadra).",
+            "element3": "Non si possono fare gesti che, in qualche modo, \"mimano\" la parola misteriosa.",
+            "element4": "Non si può dire “fa rima con”, “suona come” o “assomiglia a”: sarebbe troppo semplice!",
+            "element5": "Non si possono usare abbreviazioni (ad esempio, non di può dire “TV” per suggerire “televisione”).",
+            "element6": "È consentito cantare!"
         }
     },
     {
         "id": 5,
         "title": "Dettagli di Taboo: Versione Web",
         "elementList": {
-            "element1": "",
-            "element2": ""
+            "element1": "Questa versione di Taboo vi permette di giocare con i vostri amici comodamente da un solo dispositivo connesso ad Internet!",
+            "element2": "Cliccando sul pulsante \"INIZIA A GIOCARE\", accederete alla Lobby di gioco.",
+            "element3": "Nella Lobby, potrete inserire il nome e numero dei giocatori, il tempo per ogni turno, il numero di PASSO per ogni giocatore, e così via.",
+            "element4": "Cliccando su \"INIZIA PARTITA\", entrerete nel vivo del match!",
+            "element5": "Nella schermata della partita, visualizzerete la carta corrente, e rispettivamente il pulsante TABOO, il pulsante PASSO e il pulsante INDOVINATA.",
+            "element6": "In alto verrà mostrato il tempo rimanente del turno, insieme al punteggio corrente delle rispettive squadre.",
+            "element7": "Quando un turno si conclude, dovrete cliccare su un pulsante apposito per passare al turno successivo."
         }
     }
 ]
