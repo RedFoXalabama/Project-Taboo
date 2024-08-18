@@ -9,6 +9,7 @@ function Rules(props) {
                 <ul className="RulesElement">
                     {handleElementList(props.item.elementList)}
                 </ul>
+                <img src={props.item.imgSRC}></img>
 
             </Paper>
             <img></img>

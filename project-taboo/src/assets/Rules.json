@@ -4,7 +4,8 @@
         "title": "Preparazione del gioco",
         "elementList": {
             "element1": "I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco/seguente."
-        }
+        },
+        "imgSRC": "../assets/PreparazioneDelGioco.png"
     },
     {
         "id": 2,
@@ -42,7 +43,7 @@
         "id": 5,
         "title": "Dettagli di Taboo: Versione Web",
         "elementList": {
-            "element1": "Questa versione di Taboo vi permette di giocare con i vostri amici comodamente da un solo dispositivo connesso ad Internet!",
+            "element1": "Questa versione di Taboo vi permette di giocare a Taboo con i vostri amici comodamente da un solo dispositivo connesso ad Internet!",
             "element2": "Cliccando sul pulsante \"INIZIA A GIOCARE\", accederete alla Lobby di gioco.",
             "element3": "Nella Lobby, potrete inserire il nome e numero dei giocatori, il tempo per ogni turno, il numero di PASSO per ogni giocatore, e così via.",
             "element4": "Cliccando su \"INIZIA PARTITA\", entrerete nel vivo del match!",

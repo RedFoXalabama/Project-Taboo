@@ -116,8 +116,10 @@ footer {
 #rulePaper {
     background-color: #d176ff;
     padding: 20px;
-    width: 800px;
-    height: 600px;
+    min-width: 500px;
+    min-height: 500px;
+    width: auto;
+    height: auto;
     border-radius: 25px;
     box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
