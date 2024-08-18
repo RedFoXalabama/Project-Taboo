@@ -273,6 +273,7 @@ input[type=number] {
 /*-NUMERO GIOCATORI E INPUT DEL TEMPO PER TURNO-*/
 
 #numPlayers, #turnTimeInput {
+    color: #01071A;
     background-color: #feffec;
     border-top: 2.5px solid #000000;
     border-left: 3.5px solid #41297a;

@@ -5,6 +5,7 @@ import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import StartGame from './components/StartGame.jsx';
 import RuleCarousel from './components/RuleCarousel.jsx';
+import FormContainer from './components/FormContainer.jsx';
 
 function App() {
  const [page, setPage] = useState("index");
@@ -36,6 +37,7 @@ function App() {
   return (
     <>
     <Header imgID={handleHeaderImgID()}/>
+    <FormContainer />
     <Footer />
   </>
   )

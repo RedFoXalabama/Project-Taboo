@@ -9,7 +9,6 @@ function RuleCarousel() {
                 { RulesJson.map( item => <Rules key={item.id} item={item} /> ) }
             </Carousel>
         </div>
-
     )
 }
 
