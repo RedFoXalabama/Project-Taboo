@@ -18,11 +18,16 @@
     {
         "id": 4,
         "title": "Le regole del perfetto buzzatore",
-        "element1": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+        "elementList": {
+            "element1": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+        }
     },
     {
         "id": 5,
         "title": "Dettagli di Taboo: Versione Web",
-        "element1": "a"
+        "elementList": {
+            "element1": "",
+            "element2": ""
+        }
     }
 ]
