@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "How to play",
+        "content": "The game is played in teams of two or more. The goal is to get your teammates to guess the word you are describing, but there are certain words you can't use. The game is played in rounds, and each round lasts for a minute. The team with the most points at the end of the game wins."
+    },
+    {
+        "id": 2,
+        "title": "Scoring",
+        "content": "Each team takes turns describing words to their teammates. If the team guesses the word correctly, they get a point. If the team uses a taboo word, they lose a point. If the team passes on a word, they lose a point. The team with the most points at the end of the game wins."
+    },
+    {
+        "id": 3,
+        "title": "Taboo words",
+        "content": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+    },
+    {
+        "id": 4,
+        "title": "Taboo words",
+        "content": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+    }
+]

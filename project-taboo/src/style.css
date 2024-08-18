@@ -1,0 +1,526 @@
+body {
+    background: rgb(146,28,181);
+    background: radial-gradient(circle, rgba(146,28,181,1) 0%, rgba(58,0,87,1) 100%);
+    /*background: url("./assets/IMG_0379.png");*/
+    overflow-y: scroll;
+    /*overflow-x: hidden;*/
+    font-family: "Readex Pro", sans-serif;
+    margin-bottom: 0px;
+}
+
+main {
+    margin: 30px;
+}
+
+#startArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 5px;
+}
+
+#startGame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 50px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    color: #01071A;
+    font-weight: bold;
+    font-size: 20px;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #f9d402;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 10px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #d7b701;
+}
+
+#startGame:hover {
+    box-shadow: 0px 0px 10px 3px #e8c607;
+    transform: scale(1.05);
+}
+
+#tabooLogo {
+    width: 500px;
+    height: 200px;
+    align-items: center;
+    min-width: 400px;
+    min-height: 165px;
+}
+
+#tabooLogoForm {
+    width: 250px;
+    height: 103px;
+    align-items: center;
+    min-width: 200px;
+    min-height: 83px;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+    color: white;
+}
+
+footer {
+    background-color: #190f31;
+    /*width: 100vw;*/
+    padding: 20px;
+    border: 0px;
+    margin-left: -8px;
+    margin-bottom: 0px;
+    margin-right: -8px;
+}
+
+/*REGOLE DEL GIOCO*/
+
+.RulesHead {
+    color: #d176ff;
+    font-size: 5em;
+}
+
+.RulesElement {
+    color: #e7c6ff;
+    font-size: 0.6em;
+    line-height: 1.7em;
+}
+
+.Rules {
+    color: #e8c607;;
+    font-size: 2.6em;
+}
+
+footer {
+    color: #feffec;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+#hasbroLogo {
+    width: 100px;
+    height: 100px;
+}
+
+/*CSS DELLA PAGINA DI CREAZIONE PARTITA*/
+
+#lobbyMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*CONTENITORE DEL FORM*/
+
+#matchFormContainer {
+    width: min-content;
+    background-color: #ba9aca; /*DA MODIFICARE*/
+    border-color: #190f31;
+    border-radius: 80px;
+    box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 40px;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+}
+
+/*PARTE PER RIMUOVERE LE FRECCE DAGLI INPUT NUMERICI*/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/*CONTENUTI DI MATCHFORMCONTAINER*/
+
+#matchFormContainer * {
+    text-align: center;
+}
+
+/*-PULSANTE DI RITORNO ALLA HOME-*/
+
+#goBackHome {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 40px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #ff964f;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #fd7e29;
+    white-space: nowrap;
+}
+
+#goBackHome span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+#goBackHome span:after {
+    content: '<<';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+#goBackHome:hover {
+    box-shadow: 0px 0px 10px 3px #ff6b08;
+    transform: scale(1.05);
+}
+
+#goBackHome:hover span {
+    padding-right: 25px;
+}
+
+#goBackHome:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+/*-CONTENITORE DEI GIOCATORI E INPUT DEI GIOCATORI-*/
+
+#matchPlayers {
+    display: flex;
+    flex-direction: row;
+}
+
+#redPlayers, #bluePlayers {
+    display: flex;
+    flex-direction: column;
+}
+
+.redPlayersInput {
+    background-color: #ef9198;
+    border-top: 2.5px solid #d61622;
+    border-left: 3.5px solid #f0414d;
+    border-right: 3.5px solid #f0414d;
+    border-bottom: 3.5px solid #f0414d;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 20px;
+    margin: 10px;
+    padding: 8px;
+    transition-duration: 0.3s;
+    font-family: "Readex Pro", sans-serif;
+}
+
+.redPlayersInput:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px 3px #d61622;
+}
+
+.redPlayersInput::placeholder {
+    color: #ebeaea;
+}
+
+.bluePlayersInput::placeholder {
+    color: #ebeaea;
+}
+
+.bluePlayersInput {
+    background-color: #71bee7;
+    border-top: 2.5px solid #0178b8;
+    border-left: 3.5px solid #15a0eb;
+    border-right: 3.5px solid #15a0eb;
+    border-bottom: 3.5px solid #15a0eb;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    border-radius: 20px;
+    margin: 10px;
+    padding: 8px;
+    transition-duration: 0.3s;
+    font-family: "Readex Pro", sans-serif;
+}
+
+.bluePlayersInput:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px 3px #0178b8;
+}
+
+/*-NUMERO GIOCATORI E INPUT DEL TEMPO PER TURNO-*/
+
+#numPlayers, #turnTimeInput {
+    background-color: #feffec;
+    border-top: 2.5px solid #000000;
+    border-left: 3.5px solid #41297a;
+    border-right: 3.5px solid #41297a;
+    border-bottom: 3.5px solid #41297a;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    margin: 10px;
+    padding: 8px;
+    transition-duration: 0.3s;
+    font-family: "Readex Pro", sans-serif;
+}
+
+#button-minus, #button-plus {
+    background-color: #624b9a;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: 0px;
+    border-bottom: 3.5px solid #4f358b;
+    border-radius: 100px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    font-family: "Readex Pro", sans-serif;
+    color: #feffec;
+    font-weight: 1000;
+    transition-duration: 0.4s;
+}
+
+#button-minus:hover, #button-plus:hover {
+    box-shadow: 0px 0px 10px 3px #7353be;
+    transform: scale(1.2);
+}
+
+#numPlayers:focus, #turnTimeInput:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px 3px #41297a;
+}
+
+/*-PULSANTE DI INIZIO PARTITA-*/
+
+/*Per startMatch, sono state copiate provvisoriamente le impostazioni di startGame*/
+#startMatch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 40px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #f9d402;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px auto;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #d7b701;
+}
+
+#startMatch:hover {
+    box-shadow: 0px 0px 10px 3px #e8c607;
+    transform: scale(1.05);
+    animation-name: buttonAnimation;
+    animation-delay: 0s;
+    animation-duration: 0.3s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+/*STILE DEL MATCH*/
+#tabooLogoMatch {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 170px;
+    height: 70px;
+}
+
+#matchContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#cardContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("./assets/carta_bordo_esterno.png");
+    background-repeat: no-repeat;
+    border-radius: 60px;
+    background-size: 100% 100%;
+    background-color: white;
+    font-size: 2rem;
+    width: 400px;
+    height: fit-content;
+}
+#wordContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/carta_bordo_interno_blu.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 400px;
+    padding-bottom: 1em;
+}
+
+#cardWord {
+    margin: 1.5em 1em 1em 1em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    /*white-space: nowrap; SERVE PER METTERE LA PAROLA SU UN SOLO RIGO, DA DISCUTERE*/
+}
+
+#listContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0em 0em 0em 0em;
+    margin: 0.5em 1em 1em 1em;
+}
+#cardList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding-inline-start: 0px;
+}
+
+#cardImg {
+    width: 20rem;
+    height: 25rem;
+    border-radius: 60px;
+}
+
+#matchButtonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    gap: 40px;
+}
+
+#tabooButton {
+    width: 100px;
+    height: 50px;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #624b9a;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #452a87;
+}
+
+#tabooButton:hover {
+    box-shadow: 0px 0px 10px 3px #5736ab;
+    transform: scale(1.05);
+}
+
+#tabooButton svg {
+    padding-top: 5px;
+    padding-right: 3.8px;
+    width: 60px;
+    height: 30px;
+}
+
+#skipButton {
+    width: 100px;
+    height: 50px;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #f9d402;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #d7b701;
+}
+
+#skipButton:hover {
+    box-shadow: 0px 0px 10px 3px #e8c607;
+    transform: scale(1.05);
+}
+
+#skipButton svg {
+    padding-top: 5px;
+    width: 60px;
+    height: 30px;
+}
+
+#correctButton {
+    background-image: "check.svg";
+    width: 100px;
+    height: 50px;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #80ef80;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    margin: 25px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #47cb47;
+}
+
+#correctButton:hover {
+    box-shadow: 0px 0px 10px 3px #4ae94a;
+    transform: scale(1.05);
+}
+
+#correctButton svg {
+    width: 90px;
+    height: 45px;
+}
+
+
+/*KEYFRAMES*/
+@keyframes buttonAnimation {
+    from {transform: rotate(2deg)} to {transform: rotate(-2deg)}
+};
+
