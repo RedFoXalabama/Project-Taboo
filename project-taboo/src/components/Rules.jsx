@@ -1,16 +1,19 @@
 /* eslint-disable react/prop-types */
-import { Paper, Button } from '@mui/material'
+import { Paper } from '@mui/material'
 
 function Rules(props) {
     return (
-        <Paper>
-            <h2>{props.item.title}</h2>
-            <p>{props.item.content}</p>
-
-            <Button className="CheckButton">
-                Check it out!
-            </Button>
-        </Paper>
+        <div id="ruleContainer">
+            <Paper id="rulePaper">
+                <h2 className="Rules">{props.item.title}</h2>
+                <ul className="RulesElement">
+                    <li>{props.item.element1}</li>
+                    <li>{props.item.element2}</li>
+                    
+                </ul>
+            </Paper>
+            <img></img>
+        </div>
     )
 }
 

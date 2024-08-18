@@ -1,22 +1,28 @@
 [
     {
         "id": 1,
-        "title": "How to play",
-        "content": "The game is played in teams of two or more. The goal is to get your teammates to guess the word you are describing, but there are certain words you can't use. The game is played in rounds, and each round lasts for a minute. The team with the most points at the end of the game wins."
+        "title": "Preparazione del gioco",
+        "element1": "I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco/seguente."
     },
     {
         "id": 2,
-        "title": "Scoring",
-        "content": "Each team takes turns describing words to their teammates. If the team guesses the word correctly, they get a point. If the team uses a taboo word, they lose a point. If the team passes on a word, they lose a point. The team with the most points at the end of the game wins."
+        "title": "Scopo del gioco",
+        "element1": "Lo scopo di Taboo è quello di far indovinare alla propria squadra la parola misteriosa indicata nella parte superiore della carta, ma senza usare nella vostra descrizione nessuna delle 5 parole taboo, per non essere \"buzzati\" all'istante dall'altra squadra!"
     },
     {
         "id": 3,
-        "title": "Taboo words",
-        "content": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+        "title": "Svolgimento del gioco",
+        "element1": "In ogni turno, una squadra deve cercare di indovinare più parole misteriose possibili in un tempo limitato, scegliendo un membro della squadra che farà da suggeritore per far indovinare le parole misteriose",
+        "element2": "Un membro dell'altra squadra svolgerà il ruolo di buzzatore, e dovrà assicurarsi che il suggeritore non usi le parole taboo presenti sulla carta nella sua descrizione."
     },
     {
         "id": 4,
-        "title": "Taboo words",
-        "content": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+        "title": "Le regole del perfetto buzzatore",
+        "element1": "Each word has a list of taboo words that cannot be used to describe it. If a player uses a taboo word, the team loses a point. The taboo words are listed on the card with the word."
+    },
+    {
+        "id": 5,
+        "title": "Dettagli di Taboo: Versione Web",
+        "element1": "a"
     }
 ]

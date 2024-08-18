@@ -83,19 +83,14 @@ footer {
 
 /*REGOLE DEL GIOCO*/
 
-.RulesHead {
-    color: #d176ff;
-    font-size: 5em;
-}
-
 .RulesElement {
-    color: #e7c6ff;
-    font-size: 0.6em;
+    color: #10001c;
+    font-size: 1em;
     line-height: 1.7em;
 }
 
 .Rules {
-    color: #e8c607;;
+    color: #ffdf00;
     font-size: 2.6em;
 }
 
@@ -109,6 +104,22 @@ footer {
 #hasbroLogo {
     width: 100px;
     height: 100px;
+}
+
+/*RULE CAROUSEL*/
+
+#ruleContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#rulePaper {
+    background-color: #d176ff;
+    padding: 20px;
+    width: 800px;
+    height: 600px;
+    border-radius: 25px;
+    box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /*CSS DELLA PAGINA DI CREAZIONE PARTITA*/

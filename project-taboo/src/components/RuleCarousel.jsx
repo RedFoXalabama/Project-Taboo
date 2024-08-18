@@ -4,11 +4,14 @@ import RulesJson from '../assets/Rules.json'
 
 function RuleCarousel() {
     return (
-        <Carousel>
-            {
+        <div>
+            <Carousel id="ruleCarousel">
+                {
                 RulesJson.map( item => <Rules key={item.id} item={item} /> )
-            }
-        </Carousel>
+                }
+            </Carousel>
+        </div>
+
     )
 }
 
