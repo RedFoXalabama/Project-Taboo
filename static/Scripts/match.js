@@ -32,6 +32,7 @@ async function getCardsFromServer() {
         //const data = await response.json();
         //console.log(data);
         //return data;
+        console.log(response.json());
         return await response.json();
       } else {
         throw new Error('Request failed!');

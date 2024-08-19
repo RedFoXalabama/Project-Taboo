@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("static"));
 app.use(bodyParser.urlencoded({extended: true}))
-app.use("/api/cards", cardRoutes);     //app.get('/api/cards', cardController.getAllCards); route più specifica
+app.use("/api/cards", cardRoutes);
 app.use("/api/rules", ruleRoutes);
 
 
