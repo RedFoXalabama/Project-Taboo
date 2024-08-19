@@ -6,11 +6,12 @@ function Rules(props) {
         <div id="ruleContainer">
             <Paper id="rulePaper">
                 <h2 className="Rules">{props.item.title}</h2>
-                <ul className="RulesElement">
-                    {handleElementList(props.item.elementList)}
-                </ul>
-                <img src={props.item.imgSRC}></img>
-
+                <div>
+                    <ul className="RulesElement">
+                        {handleElementList(props.item.elementList)}
+                    </ul>
+                    <img src={props.item.imgSRC}></img>
+                </div>
             </Paper>
             <img></img>
         </div>

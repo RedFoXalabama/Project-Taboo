@@ -3,7 +3,7 @@
         "id": 1,
         "title": "Preparazione del gioco",
         "elementList": {
-            "element1": "I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco/seguente."
+            "element1": "I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco."
         },
         "imgSRC": "../assets/PreparazioneDelGioco.png"
     },

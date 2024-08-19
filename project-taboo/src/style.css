@@ -116,12 +116,25 @@ footer {
 #rulePaper {
     background-color: #d176ff;
     padding: 20px;
-    min-width: 500px;
     min-height: 500px;
     width: auto;
     height: auto;
     border-radius: 25px;
     box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+#rulePaper div {
+    font-weight: bold;
+    text-align: start;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+#rulePaper img {
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
 }
 
 /*CSS DELLA PAGINA DI CREAZIONE PARTITA*/
