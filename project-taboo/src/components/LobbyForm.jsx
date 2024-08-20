@@ -3,8 +3,8 @@ import { useState } from 'react'
 
 function LobbyForm({onStartMatch}) { 
     const [numPlayers, setNumPlayers] = useState(2);
-    const [redPlayers, setRedPlayers] = useState(['']);
-    const [bluePlayers, setBluePlayers] = useState(['']);
+    const [redPlayers, setRedPlayers] = useState(['','']);
+    const [bluePlayers, setBluePlayers] = useState(['','']);
     const [turnRange, setTurnRange] = useState(1);
     const [passRange, setPassRange] = useState(0);
     const [turnTime, setTurnTime] = useState(60);
@@ -16,16 +16,14 @@ function LobbyForm({onStartMatch}) {
 
     async function SendDataToServer() {
         try {
-            
             const data = {
                 playerNumber: numPlayers,
                 redTeam : redPlayers,
-                blueteam: bluePlayers,
+                blueTeam: bluePlayers,
                 turnNumber: turnRange,
                 turnTime : turnTime,
                 passPerTurn: passRange,
             };
-
             const response = await fetch('http://localhost:3000/api/rules/', {
               method: 'POST',
               body: JSON.stringify(data),
@@ -40,11 +38,16 @@ function LobbyForm({onStartMatch}) {
             }
           } catch (error) {
             console.log(error);
-          }
+        }
     }
 
     return (
-        <form id="matchForm" onSubmit={(e) => { e.preventDefault(); SendDataToServer(); }}>
+        <form id="matchForm" onSubmit={
+            (e) => { 
+                e.preventDefault();
+                SendDataToServer();
+                onStartMatch();
+            }}>
             <p>Numero di giocatori per squadra</p>
             <input type="button" value="-" id="button-minus" data-field="quantity" onClick={ () => {
                 if(numPlayers > 2) {

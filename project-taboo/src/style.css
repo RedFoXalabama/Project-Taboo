@@ -397,7 +397,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("./assets/carta_bordo_esterno.png");
+    background-image: url("../public/assets/carta_bordo_esterno.png");
     background-repeat: no-repeat;
     border-radius: 60px;
     background-size: 100% 100%;
@@ -411,7 +411,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../assets/carta_bordo_interno_blu.png");
+    background-image: url("../public/assets/carta_bordo_interno_blu.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 400px;
@@ -442,6 +442,7 @@ input[type=number] {
     align-items: center;
     gap: 15px;
     padding-inline-start: 0px;
+    color: #01071A;
 }
 
 #cardImg {

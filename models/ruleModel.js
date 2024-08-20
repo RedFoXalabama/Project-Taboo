@@ -6,7 +6,7 @@ const ruleSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    redTeam: { //in realtà futile, perchè il nome della carta è univoco
+    redTeam: {
         type: Array,
         required: true,
     },

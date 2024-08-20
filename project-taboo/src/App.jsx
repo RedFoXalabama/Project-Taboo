@@ -6,10 +6,14 @@ import Header from './components/Header.jsx';
 import StartGame from './components/StartGame.jsx';
 import RuleCarousel from './components/RuleCarousel.jsx';
 import FormContainer from './components/FormContainer.jsx';
+import MatchContainer from './components/MatchContainer.jsx';
 
 function App() {
  const [page, setPage] = useState("index");
 
+  const handleBackToIndex = () => {
+    setPage("index");
+  }
   const handleStartGame = () => {
     setPage("lobby");
   }
@@ -40,7 +44,7 @@ function App() {
   return (
     <>
     <Header imgID={handleHeaderImgID()}/>
-    <FormContainer onStartMatch={handleStartMatch}/>
+    <FormContainer onStartMatch={handleStartMatch} onBackToIndex={handleBackToIndex}/>
     <Footer />
   </>
   )
@@ -48,6 +52,7 @@ function App() {
   return (
     <>
     <Header imgID={handleHeaderImgID()}/>
+    <MatchContainer />
     <Footer />
   </>
   )
