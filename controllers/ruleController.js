@@ -15,8 +15,8 @@ exports.addRules = async (req,res) => {
             redScore: req.body.redScore,
             blueScore: req.body.blueScore
         });
+        console.log(rules);
         rules.save();
-        res.redirect("../match.html");
     } catch (err) {
         res.status(500).json({msg: "error", err: err})
     }

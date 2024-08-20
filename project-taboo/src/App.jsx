@@ -13,6 +13,9 @@ function App() {
   const handleStartGame = () => {
     setPage("lobby");
   }
+  const handleStartMatch = () => {
+    setPage("match");
+  }
 
   const handleHeaderImgID = () => {
     if (page === "index") {
@@ -37,7 +40,7 @@ function App() {
   return (
     <>
     <Header imgID={handleHeaderImgID()}/>
-    <FormContainer />
+    <FormContainer onStartMatch={handleStartMatch}/>
     <Footer />
   </>
   )
