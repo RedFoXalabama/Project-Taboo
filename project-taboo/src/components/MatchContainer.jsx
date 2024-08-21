@@ -39,14 +39,19 @@ function MatchContainer(){
 
   /*console.log("CARDS ARRAY FINALE " + "(" + cardsArray.length +"): "+ JSON.stringify(cardsArray, null, 2));*/
 
+  function handleNewCard(){
+    let {card, updatedCardsArray } = DrawCard(cardsArray);
+    setCardsArray(updatedCardsArray);
+    ShowNewCard(card);
+  }
+
     return (
         <div id="matchContainer">
             <Card />
             <div id="matchButtonsContainer">
-                <TabooButton /> 
-                <SkipButton />
-                <CorrectButton />
-                <button ></button>
+                <TabooButton onHandleNewCard={handleNewCard} /> 
+                <SkipButton onHandleNewCard={handleNewCard} />
+                <CorrectButton onHandleNewCard={handleNewCard}/>
             </div>
         </div>
     )
@@ -81,8 +86,9 @@ function CardsFromJsonToArray(json, array) {
   }
 
   //FUNZIONE PER PRELEVARE UNA CARTA DAL MAZZO
-  function DrawCard(array) { //SetCardsArray(DrawCard(cardsArray))
-    return array.pop();
+  function DrawCard(array) {
+    const card = array.pop();
+    return { card, updatedCardsArray: array };
   }
   //FUNZIONE PER VISUALIZZARE UNA NUOVA CARTA
   function ShowNewCard(card) { //ShowNewCard(SetCardsArray(DrawCard(cardsArray)))

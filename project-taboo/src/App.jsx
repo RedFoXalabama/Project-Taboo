@@ -31,54 +31,32 @@ function App() {
     }
   }
 
- if (page === "index") {
-  return (
-    <>
-    <Header imgID={handleHeaderImgID()}/>
-    <StartGame onStartGame={handleStartGame}/>
-    <RuleCarousel />
-    <Footer />
-  </>
-  )
-} else if (page === "lobby") {
-  return (
-    <>
-    <Header imgID={handleHeaderImgID()}/>
-    <FormContainer onStartMatch={handleStartMatch} onBackToIndex={handleBackToIndex}/>
-    <Footer />
-  </>
-  )
-} else if (page === "match") {
-  return (
-    <>
-    <Header imgID={handleHeaderImgID()}/>
-    <MatchContainer />
-    <Footer />
-  </>
-  )
+  switch (page) {
+    case "index":
+      return (
+        <>
+        <Header imgID={handleHeaderImgID()}/>
+        <StartGame onStartGame={handleStartGame}/>
+        <RuleCarousel />
+        <Footer />
+      </>
+      )
+    case "lobby":
+      return (
+        <>
+        <Header imgID={handleHeaderImgID()}/>
+        <FormContainer onStartMatch={handleStartMatch} onBackToIndex={handleBackToIndex}/>
+        <Footer />
+      </>
+      )
+    case "match":
+      return (
+        <>
+        <Header imgID={handleHeaderImgID()}/>
+        <MatchContainer />
+        <Footer />
+      </>
+      )
+    }  
 }
-  
-}
-
-//FUNZIONI PER OPERARE SULLE CARTE
-/*async function getCardsFromServer() {
-  try {
-    const response = await fetch('http://localhost:3000/api/cards/', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    });
-    if (response.ok) {
-      const data = await response.json();
-      console.log(data);
-      return data;
-    } else {
-      throw new Error('Request failed!');
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}*/
-
 export default App;

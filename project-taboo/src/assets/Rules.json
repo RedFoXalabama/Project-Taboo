@@ -12,7 +12,8 @@
         "title": "Scopo del gioco",
         "elementList": {
             "element1": "Lo scopo di Taboo è quello di far indovinare alla propria squadra la parola misteriosa indicata nella parte superiore della carta, ma senza usare nella vostra descrizione nessuna delle 5 parole taboo, per non essere \"buzzati\" all'istante dall'altra squadra!"
-        }
+        },
+        "imgSRC": "../assets/ScopoDelGioco.jpg"
     },
     {
         "id": 3,
@@ -37,7 +38,8 @@
             "element4": "Non si può dire “fa rima con”, “suona come” o “assomiglia a”: sarebbe troppo semplice!",
             "element5": "Non si possono usare abbreviazioni (ad esempio, non di può dire “TV” per suggerire “televisione”).",
             "element6": "È consentito cantare!"
-        }
+        },
+        "imgSRC": "../assets/PerfettoBuzzatore.png"
     },
     {
         "id": 5,
