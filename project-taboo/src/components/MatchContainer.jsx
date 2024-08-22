@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import TabooButton from "./tabooButton.jsx";
 import SkipButton from "./SkipButton.jsx";
 import CorrectButton from "./CorrectButton.jsx";
+import MatchTime from "./MatchTime.jsx";
 
 function MatchContainer(){
 
@@ -47,6 +48,7 @@ function MatchContainer(){
 
     return (
         <div id="matchContainer">
+            <MatchTime />
             <Card />
             <div id="matchButtonsContainer">
                 <TabooButton onHandleNewCard={handleNewCard} /> 

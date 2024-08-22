@@ -5,7 +5,7 @@ body {
     overflow-y: scroll;
     /*overflow-x: hidden;*/
     font-family: "Readex Pro", sans-serif;
-    margin-bottom: 0px;
+
 }
 
 main {
@@ -35,6 +35,7 @@ main {
     /*ASPETTI GRAFICI DEL BOTTONE*/
     background-color: #f9d402;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
     transition-duration: 0.4s;
     margin: 10px;
     border-radius: 15px;
@@ -73,12 +74,19 @@ header {
 
 footer {
     background-color: #190f31;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /*width: 100vw;*/
     /*padding: 20px;
     border: 0px;
     margin-left: -8px;
     margin-bottom: 0px;
     margin-right: -8px;*/
+}
+
+footer * {
+    font-size: 80%;
 }
 
 /*REGOLE DEL GIOCO*/
@@ -163,6 +171,7 @@ footer {
     align-items: center;
     font-family: "Readex Pro", sans-serif;
     font-weight: bold;
+    margin: 5em;
 }
 
 /*PARTE PER RIMUOVERE LE FRECCE DAGLI INPUT NUMERICI*/
@@ -202,6 +211,7 @@ input[type=number] {
     /*ASPETTI GRAFICI DEL BOTTONE*/
     background-color: #ff964f;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
     transition-duration: 0.4s;
     margin: 25px;
     border-radius: 15px;
@@ -262,6 +272,7 @@ input[type=number] {
     border-radius: 20px;
     margin: 10px;
     padding: 8px;
+    transition-property: all;
     transition-duration: 0.3s;
     font-family: "Readex Pro", sans-serif;
 }
@@ -289,6 +300,7 @@ input[type=number] {
     border-radius: 20px;
     margin: 10px;
     padding: 8px;
+    transition-property: all;
     transition-duration: 0.3s;
     font-family: "Readex Pro", sans-serif;
 }
@@ -310,6 +322,7 @@ input[type=number] {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     margin: 10px;
     padding: 8px;
+    transition-property: all;
     transition-duration: 0.3s;
     font-family: "Readex Pro", sans-serif;
     color: #01071A;
@@ -327,6 +340,7 @@ input[type=number] {
     font-family: "Readex Pro", sans-serif;
     color: #feffec;
     font-weight: 1000;
+    transition-property: all;
     transition-duration: 0.4s;
 }
 
@@ -403,7 +417,7 @@ input[type=number] {
     background-size: 100% 100%;
     background-color: white;
     font-size: 2rem;
-    width: 400px;
+    width: 300px;
     height: fit-content;
 }
 #wordContainer {
@@ -414,16 +428,16 @@ input[type=number] {
     background-image: url("../public/assets/carta_bordo_interno_blu.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    width: 400px;
+    width: 300px;
     padding-bottom: 1em;
 }
 
 #cardWord {
-    margin: 1.5em 1em 1em 1em;
+    margin: 1.5em 0.5em 0.5em 0.5em;
+    font-size: 80%;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    /*white-space: nowrap; SERVE PER METTERE LA PAROLA SU UN SOLO RIGO, DA DISCUTERE*/
 }
 
 #listContainer {
@@ -432,7 +446,7 @@ input[type=number] {
     justify-content: center;
     align-items: center;
     padding: 0em 0em 0em 0em;
-    margin: 0.5em 1em 1em 1em;
+    
 }
 #cardList {
     list-style: none;
@@ -440,14 +454,19 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    gap: 10px;
     padding-inline-start: 0px;
     color: #01071A;
 }
 
+#cardList li {
+    font-size: 70%;
+    font-weight: bold;
+}
+
 #cardImg {
     width: 20rem;
-    height: 25rem;
+    height: fit-content;
     border-radius: 60px;
 }
 
@@ -471,6 +490,7 @@ input[type=number] {
     /*ASPETTI GRAFICI DEL BOTTONE*/
     background-color: #624b9a;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
     transition-duration: 0.4s;
     margin: 25px;
     border-radius: 15px;
@@ -501,6 +521,7 @@ input[type=number] {
     /*ASPETTI GRAFICI DEL BOTTONE*/
     background-color: #f9d402;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
     transition-duration: 0.4s;
     margin: 25px;
     border-radius: 15px;
@@ -531,6 +552,7 @@ input[type=number] {
     /*ASPETTI GRAFICI DEL BOTTONE*/
     background-color: #80ef80;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
     transition-duration: 0.4s;
     margin: 25px;
     border-radius: 15px;
@@ -544,8 +566,8 @@ input[type=number] {
 }
 
 #correctButton svg {
-    width: 90px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
 }
 
 
