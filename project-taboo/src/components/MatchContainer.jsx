@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Card from "./Card.jsx";
 import { useState, useEffect } from "react";
 import TabooButton from "./tabooButton.jsx";
@@ -5,10 +6,12 @@ import SkipButton from "./SkipButton.jsx";
 import CorrectButton from "./CorrectButton.jsx";
 import MatchTime from "./MatchTime.jsx";
 
-function MatchContainer(){
+function MatchContainer({clientID}){
 
   const [cardsArray, setCardsArray] = useState([]);
+  const [rules, setRules] = useState([]);
 
+  //PRELEVA LE CARTE DAL SERVER
   useEffect(() => {
     const getCardsFromServer = async () => {
       try {
@@ -45,6 +48,39 @@ function MatchContainer(){
     setCardsArray(updatedCardsArray);
     ShowNewCard(card);
   }
+
+  //PRELEVA LE REGOLE DAL SERVER
+  useEffect(()=>{
+    const getRulesFromServer = async (clientID) => {
+      try {
+        const response = await fetch('http://localhost:3000/api/rules/getRulesByID/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({clientID}),
+        });
+        if (response.ok) {
+          return await response.json();
+        } else {
+          throw new Error('Request failed!');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    const fetchAndSetRules = async () => {
+      const rulesJSON = await getRulesFromServer({clientID});
+      setRules(rulesJSON);
+    };
+
+    fetchAndSetRules();
+    console.log("Rules: " + JSON.stringify(rules, null, 2));
+  })
+
+
+
 
     return (
         <div id="matchContainer">

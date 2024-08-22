@@ -2,7 +2,7 @@ const express = require("express")
 const ruleController = require("../controllers/ruleController");
 const router = express.Router()
 
-router.post("/", ruleController.addRules);
-router.get("/", ruleController.getAllRules);
+router.post("/addRules", ruleController.addRules);
+router.post("/getRulesByID", ruleController.getRulesByID);
 
 module.exports = router;

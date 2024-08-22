@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
 
-function LobbyForm({onStartMatch}) { 
+function LobbyForm({onStartMatch, clientID}) {
+    
     const [numPlayers, setNumPlayers] = useState(2);
     const [redPlayers, setRedPlayers] = useState(['','']);
     const [bluePlayers, setBluePlayers] = useState(['','']);
@@ -17,6 +18,7 @@ function LobbyForm({onStartMatch}) {
     async function SendDataToServer() {
         try {
             const data = {
+                clientID: clientID,
                 playerNumber: numPlayers,
                 redTeam : redPlayers,
                 blueTeam: bluePlayers,
@@ -24,7 +26,7 @@ function LobbyForm({onStartMatch}) {
                 turnTime : turnTime,
                 passPerTurn: passRange,
             };
-            const response = await fetch('http://localhost:3000/api/rules/', {
+            const response = await fetch('http://localhost:3000/api/rules/addRules/', {
               method: 'POST',
               body: JSON.stringify(data),
               headers: {

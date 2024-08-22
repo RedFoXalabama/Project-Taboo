@@ -6,6 +6,7 @@ const Rule = mongoose.model("Rule", ruleSchema, "Rules");
 exports.addRules = async (req,res) => {
     try {
         const rules = new Rule({
+            clientID: req.body.clientID,
             playerNumber: req.body.playerNumber,
             redTeam: req.body.redTeam,
             blueTeam: req.body.blueTeam,
@@ -22,9 +23,9 @@ exports.addRules = async (req,res) => {
     }
 }
 
-exports.getAllRules = async (req,res) => {
+exports.getRulesByID = async (req,res) => {
         try {
-            const rules = await Rule.find({});
+            const rules = await Rule.findOne(req.body.clientID);
             res.status(200).json(rules);
         } catch (err) {
             res.status(500).json({msg: "error", err: err})

@@ -10,6 +10,7 @@ import MatchContainer from './components/MatchContainer.jsx';
 
 function App() {
  const [page, setPage] = useState("index");
+ const [clientID, setClientID] = useState(Math.floor(Math.random() * 10001)); //random number between 0 and 10000
 
   const handleBackToIndex = () => {
     setPage("index");
@@ -45,7 +46,7 @@ function App() {
       return (
         <>
         <Header imgID={handleHeaderImgID()}/>
-        <FormContainer onStartMatch={handleStartMatch} onBackToIndex={handleBackToIndex}/>
+        <FormContainer onStartMatch={handleStartMatch} onBackToIndex={handleBackToIndex} clientID={clientID}/>
         <Footer />
       </>
       )
@@ -53,7 +54,7 @@ function App() {
       return (
         <>
         <Header imgID={handleHeaderImgID()}/>
-        <MatchContainer />
+        <MatchContainer clientID={clientID} />
         <Footer />
       </>
       )

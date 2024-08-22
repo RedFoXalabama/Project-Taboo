@@ -2,6 +2,10 @@ const e = require("express");
 const mongoose = require("mongoose");
 
 const ruleSchema = new mongoose.Schema({
+    clientID: {
+        type: Number,
+        required: true,
+    },
     playerNumber: {
         type: Number,
         required: true,
