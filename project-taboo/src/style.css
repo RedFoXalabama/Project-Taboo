@@ -160,7 +160,7 @@ footer {
 
 #matchFormContainer {
     width: min-content;
-    background-color: #ba9aca; /*DA MODIFICARE*/
+    background-color: #d88cfe;
     border-color: #190f31;
     border-radius: 80px;
     box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -209,14 +209,14 @@ input[type=number] {
     font-size: 15px;
     color: #01071A;
     /*ASPETTI GRAFICI DEL BOTTONE*/
-    background-color: #ff964f;
+    background-color: #ff4e88;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     transition-property: all;
     transition-duration: 0.4s;
     margin: 25px;
     border-radius: 15px;
     border: 0px;
-    border-bottom: 4px solid #fd7e29;
+    border-bottom: 4px solid #dd205f;
     white-space: nowrap;
 }
 
@@ -237,7 +237,7 @@ input[type=number] {
 }
 
 #goBackHome:hover {
-    box-shadow: 0px 0px 10px 3px #ff6b08;
+    box-shadow: 0px 0px 10px 3px #ff4e88;
     transform: scale(1.05);
 }
 
@@ -406,6 +406,21 @@ input[type=number] {
     justify-content: center;
 }
 
+#timeCardPoints {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media screen and (max-width: 667px) {
+    #timeCardPoints {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+/*STILE DELLA CARTA*/
 #cardContainer {
     display: flex;
     flex-direction: column;
@@ -419,6 +434,7 @@ input[type=number] {
     font-size: 2rem;
     width: 300px;
     height: fit-content;
+
 }
 #wordContainer {
     display: flex;
@@ -467,8 +483,53 @@ input[type=number] {
 #cardImg {
     width: 20rem;
     height: fit-content;
-    border-radius: 60px;
 }
+
+/*STILE DEI BOX PUNTEGGIO*/
+
+#matchPoints {
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+    margin: 20px;
+    width: max-content;
+}
+
+#redPoints {
+    background-color: #d61622;
+    border-radius: 50px;
+    flex-grow: 1;
+    padding: 1em;
+    font-weight: bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
+    transition-duration: 0.4s;
+}
+
+#bluePoints {
+    background-color: #004ed4;
+    border-radius: 50px;
+    flex-grow: 1;
+    padding: 1em;
+    font-weight: bold;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
+    transition-duration: 0.4s;
+}
+
+/*EVENTI CHE ACCADRANNO SUL CAMBIO TURNO, MOMENTANEAMENTE SU HOVER*/
+
+#redPoints:hover {
+    transform: scale(0.8);
+    opacity: 0.8;
+}
+
+#bluePoints:hover {
+    transform: scale(0.8);
+    opacity: 0.8;
+}
+
+/*STILE DEI PULSANTI DEL MATCH*/
 
 #matchButtonsContainer {
     display: flex;

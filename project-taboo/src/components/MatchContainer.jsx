@@ -5,6 +5,7 @@ import TabooButton from "./tabooButton.jsx";
 import SkipButton from "./SkipButton.jsx";
 import CorrectButton from "./CorrectButton.jsx";
 import MatchTime from "./MatchTime.jsx";
+import MatchPoints from "./MatchPoints.jsx";
 
 function MatchContainer({clientID}){
 
@@ -84,8 +85,11 @@ function MatchContainer({clientID}){
 
     return (
         <div id="matchContainer">
-            <MatchTime />
-            <Card />
+            <div id="timeCardPoints">
+              <MatchTime />
+              <Card />
+              <MatchPoints />
+            </div>
             <div id="matchButtonsContainer">
                 <TabooButton onHandleNewCard={handleNewCard} /> 
                 <SkipButton onHandleNewCard={handleNewCard} />
