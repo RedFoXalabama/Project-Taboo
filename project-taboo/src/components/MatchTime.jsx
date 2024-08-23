@@ -11,7 +11,7 @@ function MatchTime() {
 
     return (
 
-        <div id="matchTime">TEMPO
+        <div id="matchTime">
         </div>
     )
 }

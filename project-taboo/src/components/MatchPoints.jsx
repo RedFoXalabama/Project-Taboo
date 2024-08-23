@@ -3,11 +3,11 @@ function MatchPoints() {
         <div id="matchPoints">
             <div id="redPoints">
                 <p>SQUADRA ROSSA</p>
-                <p>0</p>
+                <p id="redPointsScore">0</p>
             </div>
             <div id="bluePoints">
                 <p>SQUADRA BLU</p>
-                <p>0</p>
+                <p id="bluePointsScore">0</p>
             </div>
         </div>
     )

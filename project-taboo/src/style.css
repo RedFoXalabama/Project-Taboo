@@ -1,3 +1,10 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
 body {
     background: rgb(146,28,181);
     background: radial-gradient(circle, rgba(146,28,181,1) 0%, rgba(58,0,87,1) 100%);
@@ -76,12 +83,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*width: 100vw;*/
-    /*padding: 20px;
-    border: 0px;
-    margin-left: -8px;
-    margin-bottom: 0px;
-    margin-right: -8px;*/
+
 }
 
 footer * {
@@ -139,11 +141,10 @@ footer {
 }
 
 #rulePaper img {
-    border: 10px solid;
     border-radius: 10px;
-    width: 300px;
-    height: 300px;
-    border-color: rgba(146,28,181,1);
+    max-height: 30%;
+    max-width: 30%;
+    box-shadow: 0 8px 16px 5px rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /*CSS DELLA PAGINA DI CREAZIONE PARTITA*/
@@ -405,16 +406,29 @@ input[type=number] {
 }
 
 #timeCardPoints {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-areas: "time card points";
+    grid-template-columns: 1fr 2fr 1fr;
     justify-content: center;
+    column-gap: 5em;
 }
 
-@media screen and (max-width: 667px) {
+@media screen and (max-width: 720px) {
     #timeCardPoints {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        display: grid;
+        grid-template-areas: 
+        "empty time empty" "redPoints card bluePoints"
+        ;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: auto;
+    }
+
+    #redPoints {
+        grid-area: redPoints;
+    }
+
+    #bluePoints {
+        grid-area: bluePoints;
     }
 }
 
@@ -422,16 +436,17 @@ input[type=number] {
 #cardContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-image: url("../public/assets/carta_bordo_esterno.png");
-    background-repeat: no-repeat;
     border-radius: 60px;
     background-size: 100% 100%;
     background-color: white;
     font-size: 2rem;
     width: 300px;
     height: fit-content;
+    grid-area: card;
+    margin-left: 15%;
+    margin-right: 15%;
 
 }
 #wordContainer {
@@ -490,6 +505,7 @@ input[type=number] {
     flex-direction: column;
     gap: 5em;
     margin: 20px;
+    grid-area: points;
 }
 
 #redPoints {
@@ -514,16 +530,20 @@ input[type=number] {
     transition-duration: 0.4s;
 }
 
+#matchPoints #redPointsScore, #matchPoints #bluePointsScore {
+    font-size: 2em;
+}
+
 /*EVENTI CHE ACCADRANNO SUL CAMBIO TURNO, MOMENTANEAMENTE SU HOVER*/
 
 #redPoints:hover {
     transform: scale(0.8);
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 #bluePoints:hover {
     transform: scale(0.8);
-    opacity: 0.8;
+    opacity: 0.6;
 }
 
 /*STILE DEL TEMPO*/
@@ -532,6 +552,7 @@ input[type=number] {
     border: #000000 solid;
     border-radius: 10px;
     margin: 20px;
+    grid-area: time;
 }
 
 /*STILE DEI PULSANTI DEL MATCH*/
