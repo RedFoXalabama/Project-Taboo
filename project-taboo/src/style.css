@@ -1,7 +1,6 @@
 body {
     background: rgb(146,28,181);
     background: radial-gradient(circle, rgba(146,28,181,1) 0%, rgba(58,0,87,1) 100%);
-    /*background: url("./assets/IMG_0379.png");*/
     overflow-y: scroll;
     /*overflow-x: hidden;*/
     font-family: "Readex Pro", sans-serif;
@@ -356,7 +355,6 @@ input[type=number] {
 
 /*-PULSANTE DI INIZIO PARTITA-*/
 
-/*Per startMatch, sono state copiate provvisoriamente le impostazioni di startGame*/
 #startMatch {
     display: flex;
     justify-content: center;
@@ -492,7 +490,6 @@ input[type=number] {
     flex-direction: column;
     gap: 5em;
     margin: 20px;
-    width: max-content;
 }
 
 #redPoints {
@@ -527,6 +524,14 @@ input[type=number] {
 #bluePoints:hover {
     transform: scale(0.8);
     opacity: 0.8;
+}
+
+/*STILE DEL TEMPO*/
+
+#matchTime {
+    border: #000000 solid;
+    border-radius: 10px;
+    margin: 20px;
 }
 
 /*STILE DEI PULSANTI DEL MATCH*/
