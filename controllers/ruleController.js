@@ -25,7 +25,8 @@ exports.addRules = async (req,res) => {
 
 exports.getRulesByID = async (req,res) => {
         try {
-            const rules = await Rule.findOne(req.body.clientID);
+            console.log(req.body.clientID );
+            const rules = await Rule.findOne({ clientID: req.body.clientID });
             res.status(200).json(rules);
         } catch (err) {
             res.status(500).json({msg: "error", err: err})

@@ -54,12 +54,13 @@ function MatchContainer({clientID}){
   useEffect(()=>{
     const getRulesFromServer = async (clientID) => {
       try {
+        console.log("Sending request with clientID:" + JSON.stringify({clientID}));
         const response = await fetch('http://localhost:3000/api/rules/getRulesByID/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({clientID}),
+          body: JSON.stringify(clientID),
         });
         if (response.ok) {
           return await response.json();
@@ -78,10 +79,7 @@ function MatchContainer({clientID}){
 
     fetchAndSetRules();
     console.log("Rules: " + JSON.stringify(rules, null, 2));
-  })
-
-
-
+  }, [])
 
     return (
         <div id="matchContainer">
