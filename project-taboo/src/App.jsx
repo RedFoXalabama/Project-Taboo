@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-import "./style.css";
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import StartGame from './components/StartGame.jsx';

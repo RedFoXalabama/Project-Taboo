@@ -126,10 +126,19 @@ function MatchContainer({clientID}){
     //far ripartire il timer
   }, [currentTeam]);
 
+
+  function handleChangeTurn() {
+    setCurrentTurn(currentTurn + 1);
+  }
+
+
+
+
+  if (turnTime > 0  && turnTime !== undefined) {
     return (
-        <div id="matchContainer">
+      <div id="matchContainer">
             <div id="timeCardPoints">
-              <MatchTime />
+              <MatchTime turnTime={turnTime} handleChangeTurn={handleChangeTurn} />
               <Card />
               <MatchPoints />
             </div>
@@ -139,7 +148,8 @@ function MatchContainer({clientID}){
                 <CorrectButton onHandleNewCard={handleNewCard}/>
             </div>
         </div>
-    )
+    );
+  }
 }
 
 //FUNZIONI PER OPERARE SULLE CARTE
