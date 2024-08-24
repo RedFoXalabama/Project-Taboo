@@ -8,9 +8,22 @@ import MatchTime from "./MatchTime.jsx";
 import MatchPoints from "./MatchPoints.jsx";
 
 function MatchContainer({clientID}){
-
+  //STATI PER LA GESTIONE DELLE CARTE E REGOLE222882
   const [cardsArray, setCardsArray] = useState([]);
   const [rules, setRules] = useState([]);
+
+  //STATI PER LA GESTIONE DELLA PARTITA
+  const [playerNumber, setPlayerNumber] = useState(0);
+  const [redTeam, setRedTeam] = useState([]);
+  const [blueTeam, setBlueTeam] = useState([]);
+  const [turnNumber, setTurnNumber] = useState(0);
+  const [turnTime, setTurnTime] = useState(0);
+  const [passPerTurn, setPassPerTurn] = useState(0);
+  const [redScore, setRedScore] = useState(0);
+  const [blueScore, setBlueScore] = useState(0);
+  const [currentTeam, setCurrentTeam] = useState("red");
+  const [currentTurn, setCurrentTurn] = useState(0);
+
 
   //PRELEVA LE CARTE DAL SERVER
   useEffect(() => {
@@ -78,8 +91,40 @@ function MatchContainer({clientID}){
     };
 
     fetchAndSetRules();
-    console.log("Rules: " + JSON.stringify(rules, null, 2));
-  }, [])
+    console.log("Rules: " + JSON.stringify(rules, null, 2)); 
+  }, []);
+
+  useEffect(() => {
+    //FUNZIONE PER GESTIRE LA LOGICA DEL MATCH
+    setPlayerNumber(rules.playerNumber);
+    setRedTeam(rules.redTeam);
+    setBlueTeam(rules.blueTeam);
+    setTurnNumber(rules.turnNumber);
+    setTurnTime(rules.turnTime);
+    setPassPerTurn(rules.passPerTurn);   
+  }, [rules]);
+
+  useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO DA TIMER
+    if (currentTurn == turnNumber*playerNumber + 1) {
+      if (redScore > blueScore) {
+        alert("Red Team Wins!");
+      } else if (redScore < blueScore) {
+        alert("Blue Team Wins!");
+      } else {
+        alert("It's a tie!");
+      }
+    } else if (currentTurn <= turnNumber*playerNumber) {
+      if (currentTurn % 2 == 0) {
+        setCurrentTeam("red");
+      } else {
+        setCurrentTeam("blue");
+      }
+    }
+  }, [turnNumber]);
+
+  useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TEAM GIOCANTE DA AGGIORNAMENTO TURNO
+    //far ripartire il timer
+  }, [currentTeam]);
 
     return (
         <div id="matchContainer">

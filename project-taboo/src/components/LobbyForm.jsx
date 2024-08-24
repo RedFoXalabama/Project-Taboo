@@ -19,7 +19,7 @@ function LobbyForm({onStartMatch, clientID}) {
         try {
             const data = {
                 clientID: clientID,
-                playerNumber: numPlayers,
+                playerNumber: numPlayers*2,
                 redTeam : redPlayers,
                 blueTeam: bluePlayers,
                 turnNumber: turnRange,
