@@ -101,6 +101,7 @@ footer * {
 .Rules {
     color: #ffdf00;
     font-size: 2.6em;
+    text-shadow: 2px 2px 1px black;
 }
 
 footer {
@@ -454,7 +455,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../public/assets/carta_bordo_interno_blu.png");
+    background-image: url("../public/assets/carta_bordo_interno_rosso.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 300px;
@@ -549,8 +550,12 @@ input[type=number] {
 /*STILE DEL TEMPO*/
 
 #matchTime {
-    border: #000000 solid;
-    border-radius: 10px;
+    border: #000000 solid 10px;
+    width: fit-content;
+    height: fit-content;
+    padding: 2em;
+    font-weight: bold;
+    border-radius: 100px;
     margin: 20px;
     grid-area: time;
 }
