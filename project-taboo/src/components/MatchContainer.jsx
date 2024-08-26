@@ -1,11 +1,12 @@
 /* eslint-disable react/prop-types */
 import Card from "./Card.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useDeferredValue } from "react";
 import TabooButton from "./tabooButton.jsx";
 import SkipButton from "./SkipButton.jsx";
 import CorrectButton from "./CorrectButton.jsx";
 import MatchTime from "./MatchTime.jsx";
 import MatchPoints from "./MatchPoints.jsx";
+import ChangeTurnButton from "./ChangeTurnButton";
 
 function MatchContainer({clientID}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE222882
@@ -23,6 +24,7 @@ function MatchContainer({clientID}){
   const [blueScore, setBlueScore] = useState(0);
   const [currentTeam, setCurrentTeam] = useState("red");
   const [currentTurn, setCurrentTurn] = useState(0);
+  const [breakTime, setBreakTime] = useState(false);
 
 
   //PRELEVA LE CARTE DAL SERVER
@@ -96,12 +98,14 @@ function MatchContainer({clientID}){
 
   useEffect(() => {
     //FUNZIONE PER GESTIRE LA LOGICA DEL MATCH
-    setPlayerNumber(rules.playerNumber);
-    setRedTeam(rules.redTeam);
-    setBlueTeam(rules.blueTeam);
-    setTurnNumber(rules.turnNumber);
-    setTurnTime(rules.turnTime);
-    setPassPerTurn(rules.passPerTurn);   
+    if (rules) {
+      setPlayerNumber(rules.playerNumber);
+      setRedTeam(rules.redTeam);
+      setBlueTeam(rules.blueTeam);
+      setTurnNumber(rules.turnNumber);
+      setTurnTime(rules.turnTime);
+      setPassPerTurn(rules.passPerTurn);
+    } 
   }, [rules]);
 
   useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO DA TIMER
@@ -114,43 +118,83 @@ function MatchContainer({clientID}){
         alert("It's a tie!");
       }
     } else if (currentTurn <= turnNumber*playerNumber) {
+      console.log("Turno: " + currentTurn);
       if (currentTurn % 2 == 0) {
-        setCurrentTeam("red");
-      } else {
         setCurrentTeam("blue");
+      } else {
+        setCurrentTeam("red");
       }
     }
-  }, [turnNumber]);
+  }, [turnNumber, currentTurn, redScore, blueScore, playerNumber]);
 
   useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TEAM GIOCANTE DA AGGIORNAMENTO TURNO
-    //far ripartire il timer
-  }, [currentTeam]);
+    //CAMBIARE COLORI DEI TEAM e carta
+    //CAMBIARE PUNTEGGI DA ASSEGNARE
+    //CAMBAIRE GRAFICA PUNTEGGI
+
+    if (breakTime == false) {
+      if (currentTeam == "red") {
+        console.log("Red Team");
+        document.querySelector("body").style.background = 'rgb(240,91,102)';
+        document.querySelector("body").style.background = 'radial-gradient(circle, rgba(240,91,102,1) 0%, rgba(135,1,11,1) 68%)';
+        //document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_rosso.png")';
+      } else if (currentTeam == "blue") {
+        console.log("Blue Team");
+        document.querySelector("body").style.background = 'rgb(0,166,229)';
+        document.querySelector("body").style.background = 'radial-gradient(circle, rgba(0,166,229,1) 0%, rgba(0,38,150,1) 68%)';
+        //document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_blu.png")';
+      }
+    }
+  }, [currentTeam, breakTime]);
 
 
   function handleChangeTurn() {
+    setBreakTime(true);
+  }
+
+  function handleNewTurn() {
+    setBreakTime(false);
     setCurrentTurn(currentTurn + 1);
   }
 
-
-
-
-  if (turnTime > 0  && turnTime !== undefined) {
-    return (
-      <div id="matchContainer">
-            <div id="timeCardPoints">
-              <MatchTime turnTime={turnTime} handleChangeTurn={handleChangeTurn} />
-              <Card />
-              <MatchPoints />
-            </div>
-            <div id="matchButtonsContainer">
-                <TabooButton onHandleNewCard={handleNewCard} /> 
-                <SkipButton onHandleNewCard={handleNewCard} />
-                <CorrectButton onHandleNewCard={handleNewCard}/>
-            </div>
-        </div>
-    );
+  function handleChangeCardColor(){
+      if (currentTeam == "red") {
+        document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_rosso.png")';
+      } else if (currentTeam == "blue") {
+        document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_blu.png")';
+      }
   }
-}
+
+  switch (breakTime) {
+    case true:
+      return (
+        <div id="matchContainer">
+                <div id="timeCardPoints">
+                  <MatchPoints />
+                </div>
+                <div id="matchButtonsContainer">
+                  <ChangeTurnButton id="changeTurnButton" handleNewTurn={handleNewTurn}/>
+                </div>
+          </div>
+      );
+    case false:
+      if (turnTime > 0  && turnTime !== undefined) {
+        return (
+          <div id="matchContainer">
+                <div id="timeCardPoints">
+                  <MatchTime turnTime={turnTime} handleChangeTurn={handleChangeTurn} />
+                  <Card handleChangeCardColor={handleChangeCardColor}/>
+                  <MatchPoints />
+                </div>
+                <div id="matchButtonsContainer">
+                  <TabooButton onHandleNewCard={handleNewCard} /> 
+                  <SkipButton onHandleNewCard={handleNewCard} />
+                  <CorrectButton onHandleNewCard={handleNewCard}/>
+                </div>
+          </div>
+        );
+      }  
+  }
 
 //FUNZIONI PER OPERARE SULLE CARTE
 //CREAZIONE DI UN ARRAY DI CARTE DUPLICATO SU CUI LAVORARE
@@ -194,5 +238,5 @@ function CardsFromJsonToArray(json, array) {
           tabooListElement.innerText = card.tabooWords[i];
       }
   }
-
+}
 export default MatchContainer;

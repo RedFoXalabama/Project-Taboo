@@ -662,6 +662,10 @@ input[type=number] {
     height: 40px;
 }
 
+#changeTurnButton {
+
+}
+
 
 /*KEYFRAMES*/
 @keyframes buttonAnimation {

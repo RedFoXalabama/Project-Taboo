@@ -1,6 +1,7 @@
-function ChangeTurnButton(){
+/* eslint-disable react/prop-types */
+function ChangeTurnButton({handleNewTurn}){
     return (
-        <button>Change Turn</button>
+        <button onClick={handleNewTurn} >Change Turn</button>
     )
 }
 

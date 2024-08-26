@@ -1,17 +1,23 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import Countdown from 'react-countdown';
-import ChangeTurnButton from "./ChangeTurnButton";
 
 
-function MatchTime({turnTime, handleCurrentTurn}) {
+function MatchTime({turnTime, handleChangeTurn}) {
+  const [isCompleted, setIsCompleted] = useState(false);
     let time = turnTime *1000;
+
+    useEffect(() => {
+      if (isCompleted) {
+          handleChangeTurn();
+      }
+  }, [isCompleted, handleChangeTurn]);
 
     const renderer = ({ minutes, seconds, completed }) => {
         if (completed) {
             // Render a complete state
-            <ChangeTurnButton />
-            handleCurrentTurn();
+            setIsCompleted(true);
+            return null;
           } else {
             // Render a countdown
             return (

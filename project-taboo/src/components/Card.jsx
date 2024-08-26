@@ -1,4 +1,5 @@
-function Card(){
+/* eslint-disable react/prop-types */
+function Card( {handleChangeCardColor}) {
     return (
         <div id="cardContainer">
             <div id="wordContainer"> 
