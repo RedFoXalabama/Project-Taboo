@@ -7,4 +7,11 @@ const useGameState = create((set) => ({
     setCurrentTeam: (currentTeam) => set({ currentTeam })
 }))
 
-export default useGameState
+const useCardWords = create((set) => ({
+    cardWord: "prova",
+    tabooWords: ["parola1", "parola2", "parola3", "parola4", "parola5"],
+    setCardWords: (cardWord) => set({ cardWord }),
+    setTabooWords: (tabooWords) => set({ tabooWords }),
+}))
+
+export { useGameState, useCardWords };

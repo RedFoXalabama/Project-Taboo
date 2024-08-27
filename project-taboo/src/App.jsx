@@ -6,7 +6,7 @@ import StartGame from './components/StartGame.jsx';
 import RuleCarousel from './components/RuleCarousel.jsx';
 import FormContainer from './components/FormContainer.jsx';
 import MatchContainer from './components/MatchContainer.jsx';
-import useGameState from './scripts/store.js';
+import {useGameState} from './scripts/store.js';
 
 function App() {
  const [page, setPage] = useState("index");

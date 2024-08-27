@@ -7,7 +7,7 @@ import CorrectButton from "./CorrectButton.jsx";
 import MatchTime from "./MatchTime.jsx";
 import MatchPoints from "./MatchPoints.jsx";
 import ChangeTurnButton from "./ChangeTurnButton";
-import useGameState from "../scripts/store.js";
+import {useGameState, useCardWords} from "../scripts/store.js";
 
 function MatchContainer({clientID}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE222882
@@ -23,9 +23,10 @@ function MatchContainer({clientID}){
   const [passPerTurn, setPassPerTurn] = useState(0);
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
-  const [currentTurn, setCurrentTurn] = useState(0);
+  const [currentTurn, setCurrentTurn] = useState(1);
   const [breakTime, setBreakTime] = useState(false);
   const { gameState, setGameState, currentTeam, setCurrentTeam } = useGameState();
+  const { cardWord, tabooWords, setCardWords, setTabooWords } = useCardWords();
 
   //PRELEVA LE CARTE DAL SERVER
   useEffect(() => {
@@ -101,7 +102,7 @@ function MatchContainer({clientID}){
   }, [rules]);
 
   useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO DA TIMER
-    if (currentTurn == turnNumber*playerNumber + 1) {
+    if (currentTurn == turnNumber*playerNumber + 1 && currentTurn > 1) {
       if (redScore > blueScore) {
         alert("Red Team Wins!");
       } else if (redScore < blueScore) {
@@ -116,6 +117,7 @@ function MatchContainer({clientID}){
       } else {
         setCurrentTeam("red");
       }
+      handleNewCard();
     }
   }, [turnNumber, currentTurn, redScore, blueScore, playerNumber]);
 
@@ -132,6 +134,7 @@ function MatchContainer({clientID}){
   function handleNewTurn() {
     setBreakTime(false);
     setCurrentTurn(currentTurn + 1);
+    handleNewCard();
   }
 
   switch (breakTime) {
@@ -200,12 +203,11 @@ function CardsFromJsonToArray(json, array) {
   }
   //FUNZIONE PER VISUALIZZARE UNA NUOVA CARTA
   function ShowNewCard(card) { //ShowNewCard(SetCardsArray(DrawCard(cardsArray)))
-    const cardWord = document.getElementById("cardWord");
-    cardWord.innerText = card.cardName;
-      for (let i = 0; i < card.tabooWords.length; i++) {
-          let tabooListElement = document.getElementById("cardListElement"+i);
-          tabooListElement.innerText = card.tabooWords[i];
-      }
+    console.log("Card: " + card.cardName);
+    setCardWords(card.cardName);
+    console.log("CardWord: " + cardWord);
+    setTabooWords(card.tabooWords);
+    console.log("TabooWords: " + tabooWords);
   }
 }
 export default MatchContainer;
