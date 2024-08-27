@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-function CorrectButton({onHandleNewCard}){
+function CorrectButton({onAddPoint}){
     const correctAudio = new Audio("../assets/gotitem.mp3");
     
     return (
         <button id="correctButton" onClick={() => {
-            onHandleNewCard();
+            onAddPoint();
             correctAudio.play();
             correctAudio.currentTime = 0;
         }}>

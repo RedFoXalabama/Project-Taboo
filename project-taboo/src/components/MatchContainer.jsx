@@ -7,12 +7,14 @@ import CorrectButton from "./CorrectButton.jsx";
 import MatchTime from "./MatchTime.jsx";
 import MatchPoints from "./MatchPoints.jsx";
 import ChangeTurnButton from "./ChangeTurnButton";
-import {useGameState, useCardWords} from "../scripts/store.js";
+import {useGameState, useCardWords, useTeamsScore} from "../scripts/store.js";
 
 function MatchContainer({clientID}){
-  //STATI PER LA GESTIONE DELLE CARTE E REGOLE222882
+  //STATI PER LA GESTIONE DELLE CARTE E REGOLE
   const [cardsArray, setCardsArray] = useState([]);
   const [rules, setRules] = useState([]);
+  const [cardsReady, setCardsReady] = useState(false);
+  const [rulesReady, setRulesReady] = useState(false);
 
   //STATI PER LA GESTIONE DELLA PARTITA
   const [playerNumber, setPlayerNumber] = useState(0);
@@ -21,9 +23,8 @@ function MatchContainer({clientID}){
   const [turnNumber, setTurnNumber] = useState(0);
   const [turnTime, setTurnTime] = useState(0);
   const [passPerTurn, setPassPerTurn] = useState(0);
-  const [redScore, setRedScore] = useState(0);
-  const [blueScore, setBlueScore] = useState(0);
-  const [currentTurn, setCurrentTurn] = useState(1);
+  const {redScore, setRedScore, blueScore, setBlueScore} = useTeamsScore();
+  const [currentTurn, setCurrentTurn] = useState(0);
   const [breakTime, setBreakTime] = useState(false);
   const { gameState, setGameState, currentTeam, setCurrentTeam } = useGameState();
   const { cardWord, tabooWords, setCardWords, setTabooWords } = useCardWords();
@@ -53,6 +54,7 @@ function MatchContainer({clientID}){
       let tempArray = [];
       await CardsFromJsonToArray(cardsJSON, tempArray);
       setCardsArray(ShuffleCards(tempArray));
+      setCardsReady(true);
     };
 
     fetchAndSetCards();
@@ -98,28 +100,34 @@ function MatchContainer({clientID}){
       setTurnNumber(rules.turnNumber);
       setTurnTime(rules.turnTime);
       setPassPerTurn(rules.passPerTurn);
-    } 
+    }
+    setRulesReady(true);
   }, [rules]);
 
-  useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO DA TIMER
-    if (currentTurn == turnNumber*playerNumber + 1 && currentTurn > 1) {
-      if (redScore > blueScore) {
-        alert("Red Team Wins!");
-      } else if (redScore < blueScore) {
-        alert("Blue Team Wins!");
-      } else {
-        alert("It's a tie!");
-      }
-    } else if (currentTurn <= turnNumber*playerNumber) {
-      console.log("Turno: " + currentTurn);
-      if (currentTurn % 2 == 0) {
-        setCurrentTeam("blue");
-      } else {
-        setCurrentTeam("red");
-      }
-      handleNewCard();
+  useEffect(() => { //FUNZIONE CHIAMATA PER INIZIALIZZARE IL TURNo
+    if (rulesReady && cardsReady) {
+      handleNewTurn();
     }
-  }, [turnNumber, currentTurn, redScore, blueScore, playerNumber]);
+  }, [rulesReady, cardsReady]);
+
+  useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO DA TIMER
+      if (currentTurn == turnNumber*playerNumber + 1 && currentTurn > 1) {
+        if (redScore > blueScore) {
+          alert("Red Team Wins!");
+        } else if (redScore < blueScore) {
+          alert("Blue Team Wins!");
+        } else {
+          alert("It's a tie!");
+        }
+      } else if (currentTurn <= turnNumber*playerNumber && currentTurn != 0) {
+        console.log("Turno: " + currentTurn);
+        if (currentTurn % 2 == 0) {
+          setCurrentTeam("blue");
+        } else {
+          setCurrentTeam("red");
+        }
+      }
+  }, [currentTurn, redScore, blueScore]);
 
   function handleNewCard(){
     let {card, updatedCardsArray } = DrawCard(cardsArray);
@@ -135,6 +143,33 @@ function MatchContainer({clientID}){
     setBreakTime(false);
     setCurrentTurn(currentTurn + 1);
     handleNewCard();
+  }
+
+  //FUNZIONI PER ASSEGNARE I PUNTEGGI DAI PULSANTI
+  function addPoint(){
+    if (currentTeam == "red") {
+      setRedScore(redScore + 1);
+    } else if (currentTeam == "blue") {
+      setBlueScore(blueScore + 1);
+    }
+  }
+  
+  function subtractPoint(){
+    if (currentTeam == "red") {
+      setRedScore(redScore - 1);
+    } else if (currentTeam == "blue") {
+      setBlueScore(blueScore - 1);
+    }
+  }
+  
+  function skipCard(){
+    if (passPerTurn > 0) {
+      setPassPerTurn(passPerTurn - 1);
+      handleNewCard();
+    } else {
+      alert("You can't skip anymore cards!");
+      //TODO: aggiungere un suono
+    }    
   }
 
   switch (breakTime) {
@@ -159,9 +194,9 @@ function MatchContainer({clientID}){
                   <MatchPoints />
                 </div>
                 <div id="matchButtonsContainer">
-                  <TabooButton onHandleNewCard={handleNewCard} /> 
-                  <SkipButton onHandleNewCard={handleNewCard} />
-                  <CorrectButton onHandleNewCard={handleNewCard}/>
+                  <TabooButton onSubtractPoint={subtractPoint} /> 
+                  <SkipButton onSkipCard={skipCard} />
+                  <CorrectButton onAddPoint={addPoint}/>
                 </div>
           </div>
         );

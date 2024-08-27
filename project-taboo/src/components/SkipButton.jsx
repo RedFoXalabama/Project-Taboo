@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-function SkipButton({onHandleNewCard}){
+function SkipButton({onSkipCard}){
     const skipAudio = new Audio("../assets/skip_button_sfx.mp3");
 
     return (
         <button id="skipButton" onClick={() => {
-            onHandleNewCard();
+            onSkipCard();
             skipAudio.play();
             skipAudio.currentTime = 0;
         }} >

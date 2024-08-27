@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-function TabooButton({onHandleNewCard}){
+function TabooButton({onSubtractPoint}){
     const tabooAudio = new Audio("../assets/taboo_button_sfx.mp3");
 
     return (
         <button id="tabooButton" onClick={ () => {
-            onHandleNewCard();
+            onSubtractPoint();
             tabooAudio.play();
             tabooAudio.currentTime = 0;
         }}>
