@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
-function Card( {handleChangeCardColor}) {
+import useGameState from "../scripts/store";
+
+function Card({handleNewCard}) {
+    const {currentTeam} = useGameState();
+
     return (
         <div id="cardContainer">
-            <div id="wordContainer"> 
+            <div id="wordContainer" style={ { 
+                backgroundImage: `url(${currentTeam === "red" ? "assets/carta_bordo_interno_rosso.png" : "assets/carta_bordo_interno_blu.png"})`
+            } }> 
                 <p id="cardWord">ANGELO</p>
                 <div id="listContainer">
                     <ul id="cardList">

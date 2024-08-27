@@ -11,7 +11,7 @@ function MatchTime({turnTime, handleChangeTurn}) {
       if (isCompleted) {
           handleChangeTurn();
       }
-  }, [isCompleted, handleChangeTurn]);
+  }, [isCompleted]);
 
     const renderer = ({ minutes, seconds, completed }) => {
         if (completed) {

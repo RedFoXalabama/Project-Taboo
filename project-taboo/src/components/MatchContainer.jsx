@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 import Card from "./Card.jsx";
-import { useState, useEffect, useDeferredValue } from "react";
+import { useState, useEffect } from "react";
 import TabooButton from "./tabooButton.jsx";
 import SkipButton from "./SkipButton.jsx";
 import CorrectButton from "./CorrectButton.jsx";
 import MatchTime from "./MatchTime.jsx";
 import MatchPoints from "./MatchPoints.jsx";
 import ChangeTurnButton from "./ChangeTurnButton";
+import useGameState from "../scripts/store.js";
 
 function MatchContainer({clientID}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE222882
@@ -22,10 +23,9 @@ function MatchContainer({clientID}){
   const [passPerTurn, setPassPerTurn] = useState(0);
   const [redScore, setRedScore] = useState(0);
   const [blueScore, setBlueScore] = useState(0);
-  const [currentTeam, setCurrentTeam] = useState("red");
   const [currentTurn, setCurrentTurn] = useState(0);
   const [breakTime, setBreakTime] = useState(false);
-
+  const { gameState, setGameState, currentTeam, setCurrentTeam } = useGameState();
 
   //PRELEVA LE CARTE DAL SERVER
   useEffect(() => {
@@ -56,14 +56,6 @@ function MatchContainer({clientID}){
 
     fetchAndSetCards();
   }, []);
-
-  /*console.log("CARDS ARRAY FINALE " + "(" + cardsArray.length +"): "+ JSON.stringify(cardsArray, null, 2));*/
-
-  function handleNewCard(){
-    let {card, updatedCardsArray } = DrawCard(cardsArray);
-    setCardsArray(updatedCardsArray);
-    ShowNewCard(card);
-  }
 
   //PRELEVA LE REGOLE DAL SERVER
   useEffect(()=>{
@@ -96,8 +88,8 @@ function MatchContainer({clientID}){
     console.log("Rules: " + JSON.stringify(rules, null, 2)); 
   }, []);
 
+  //AGGIORNAMENTO DELLO STATO DELLA PARTITA
   useEffect(() => {
-    //FUNZIONE PER GESTIRE LA LOGICA DEL MATCH
     if (rules) {
       setPlayerNumber(rules.playerNumber);
       setRedTeam(rules.redTeam);
@@ -127,26 +119,11 @@ function MatchContainer({clientID}){
     }
   }, [turnNumber, currentTurn, redScore, blueScore, playerNumber]);
 
-  useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TEAM GIOCANTE DA AGGIORNAMENTO TURNO
-    //CAMBIARE COLORI DEI TEAM e carta
-    //CAMBIARE PUNTEGGI DA ASSEGNARE
-    //CAMBAIRE GRAFICA PUNTEGGI
-
-    if (breakTime == false) {
-      if (currentTeam == "red") {
-        console.log("Red Team");
-        document.querySelector("body").style.background = 'rgb(240,91,102)';
-        document.querySelector("body").style.background = 'radial-gradient(circle, rgba(240,91,102,1) 0%, rgba(135,1,11,1) 68%)';
-        //document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_rosso.png")';
-      } else if (currentTeam == "blue") {
-        console.log("Blue Team");
-        document.querySelector("body").style.background = 'rgb(0,166,229)';
-        document.querySelector("body").style.background = 'radial-gradient(circle, rgba(0,166,229,1) 0%, rgba(0,38,150,1) 68%)';
-        //document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_blu.png")';
-      }
-    }
-  }, [currentTeam, breakTime]);
-
+  function handleNewCard(){
+    let {card, updatedCardsArray } = DrawCard(cardsArray);
+    setCardsArray(updatedCardsArray);
+    ShowNewCard(card);
+  }
 
   function handleChangeTurn() {
     setBreakTime(true);
@@ -155,14 +132,6 @@ function MatchContainer({clientID}){
   function handleNewTurn() {
     setBreakTime(false);
     setCurrentTurn(currentTurn + 1);
-  }
-
-  function handleChangeCardColor(){
-      if (currentTeam == "red") {
-        document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_rosso.png")';
-      } else if (currentTeam == "blue") {
-        document.getElementById("wordContainer").style.backgroundImage = 'url("../../assets/carta_bordo_interno_blu.png")';
-      }
   }
 
   switch (breakTime) {
@@ -183,7 +152,7 @@ function MatchContainer({clientID}){
           <div id="matchContainer">
                 <div id="timeCardPoints">
                   <MatchTime turnTime={turnTime} handleChangeTurn={handleChangeTurn} />
-                  <Card handleChangeCardColor={handleChangeCardColor}/>
+                  <Card />
                   <MatchPoints />
                 </div>
                 <div id="matchButtonsContainer">
