@@ -12,6 +12,7 @@ import {useGameState, useCardWords, useTeamsScore} from "../scripts/store.js";
 function MatchContainer({clientID}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE
   const [cardsArray, setCardsArray] = useState([]);
+  const [localCardsArray, setLocalCardsArray] = useState([]);
   const [rules, setRules] = useState([]);
   const [cardsReady, setCardsReady] = useState(false);
   const [rulesReady, setRulesReady] = useState(false);
@@ -53,6 +54,7 @@ function MatchContainer({clientID}){
       const cardsJSON = await getCardsFromServer();
       let tempArray = [];
       await CardsFromJsonToArray(cardsJSON, tempArray);
+      setLocalCardsArray([...tempArray]);
       setCardsArray(ShuffleCards(tempArray));
       setCardsReady(true);
     };
@@ -127,7 +129,7 @@ function MatchContainer({clientID}){
           setCurrentTeam("red");
         }
       }
-  }, [currentTurn, redScore, blueScore]);
+  }, [currentTurn]);
 
   function handleNewCard(){
     let {card, updatedCardsArray } = DrawCard(cardsArray);
@@ -152,6 +154,7 @@ function MatchContainer({clientID}){
     } else if (currentTeam == "blue") {
       setBlueScore(blueScore + 1);
     }
+    handleNewCard();
   }
   
   function subtractPoint(){
@@ -160,6 +163,7 @@ function MatchContainer({clientID}){
     } else if (currentTeam == "blue") {
       setBlueScore(blueScore - 1);
     }
+    handleNewCard();
   }
   
   function skipCard(){
@@ -169,7 +173,8 @@ function MatchContainer({clientID}){
     } else {
       alert("You can't skip anymore cards!");
       //TODO: aggiungere un suono
-    }    
+    }
+    handleNewCard();
   }
 
   switch (breakTime) {
@@ -233,6 +238,11 @@ function CardsFromJsonToArray(json, array) {
 
   //FUNZIONE PER PRELEVARE UNA CARTA DAL MAZZO
   function DrawCard(array) {
+    if (array.length == 0) {
+      console.log("Before ShuffleCards: " + JSON.stringify(localCardsArray.length, null, 2))
+      //await RefillCardsArray();
+      console.log("New ShuffleCards: " + JSON.stringify(cardsArray.length, null, 2))
+    }
     const card = array.pop();
     return { card, updatedCardsArray: array };
   }
@@ -243,6 +253,9 @@ function CardsFromJsonToArray(json, array) {
     console.log("CardWord: " + cardWord);
     setTabooWords(card.tabooWords);
     console.log("TabooWords: " + tabooWords);
+  }
+  function RefillCardsArray() {
+    setCardsArray(ShuffleCards(localCardsArray));
   }
 }
 export default MatchContainer;
