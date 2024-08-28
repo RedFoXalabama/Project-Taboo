@@ -5,7 +5,7 @@
         "elementList": {
             "element1": "I giocatori si dividono in due squadre, sedendosi in maniera alternata attorno ad un tavolo, come indicato nell'immagine a fianco."
         },
-        "imgSRC": "../assets/PreparazioneDelGioco.png"
+        "imgSRC": "/assets/PreparazioneDelGioco.png"
     },
     {
         "id": 2,
@@ -13,7 +13,7 @@
         "elementList": {
             "element1": "Lo scopo di Taboo è quello di far indovinare alla propria squadra la parola misteriosa indicata nella parte superiore della carta, ma senza usare nella vostra descrizione nessuna delle 5 parole taboo, per non essere \"buzzati\" all'istante dall'altra squadra!"
         },
-        "imgSRC": "../assets/ScopoDelGioco.jpg"
+        "imgSRC": "/assets/ScopoDelGioco.jpg"
     },
     {
         "id": 3,
@@ -39,7 +39,7 @@
             "element5": "Non si possono usare abbreviazioni (ad esempio, non di può dire “TV” per suggerire “televisione”).",
             "element6": "È consentito cantare!"
         },
-        "imgSRC": "../assets/PerfettoBuzzatore.png"
+        "imgSRC": "/assets/PerfettoBuzzatore.png"
     },
     {
         "id": 5,

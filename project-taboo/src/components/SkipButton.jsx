@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 function SkipButton({onSkipCard}){
-    const skipAudio = new Audio("../assets/skip_button_sfx.mp3");
+    const skipAudio = new Audio("/assets/skip_button_sfx.mp3");
 
     return (
         <button id="skipButton" onClick={() => {

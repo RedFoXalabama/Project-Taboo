@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 function TabooButton({onSubtractPoint}){
-    const tabooAudio = new Audio("../assets/taboo_button_sfx.mp3");
+    const tabooAudio = new Audio("/assets/taboo_button_sfx.mp3");
 
     return (
         <button id="tabooButton" onClick={ () => {

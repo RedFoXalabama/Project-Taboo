@@ -8,11 +8,13 @@ import MatchTime from "./MatchTime.jsx";
 import MatchPoints from "./MatchPoints.jsx";
 import ChangeTurnButton from "./ChangeTurnButton";
 import {useGameState, useCardWords, useTeamsScore} from "../scripts/store.js";
+import { getURL } from '../scripts/utility';
 
 function MatchContainer({clientID}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE
   const [cardsArray, setCardsArray] = useState([]);
   const [localCardsArray, setLocalCardsArray] = useState([]);
+  const [deckState, setDeckState] = useState(false); // FALSE = PIENO, TRUE = VUOTO
   const [rules, setRules] = useState([]);
   const [cardsReady, setCardsReady] = useState(false);
   const [rulesReady, setRulesReady] = useState(false);
@@ -34,7 +36,7 @@ function MatchContainer({clientID}){
   useEffect(() => {
     const getCardsFromServer = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/cards/', {
+        const response = await fetch(getURL("/cards/"),  {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -67,7 +69,7 @@ function MatchContainer({clientID}){
     const getRulesFromServer = async (clientID) => {
       try {
         console.log("Sending request with clientID:" + JSON.stringify({clientID}));
-        const response = await fetch('http://localhost:3000/api/rules/getRulesByID/', {
+        const response = await fetch(getURL("/rules/getRulesByID/"), {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -131,10 +133,24 @@ function MatchContainer({clientID}){
       }
   }, [currentTurn]);
 
+  useEffect(() => {
+    if (cardsArray.length == 0 || deckState) {
+      console.log("RICARICO LO STOCK");
+      setCardsArray(ShuffleCards(localCardsArray));
+    }
+  }, [deckState]);
+
   function handleNewCard(){
-    let {card, updatedCardsArray } = DrawCard(cardsArray);
-    setCardsArray(updatedCardsArray);
-    ShowNewCard(card);
+    if (cardsArray.length == 0) {
+      alert("Deck is empty! -- REFILLING");
+      setDeckState(true);
+      return false;
+    } else {
+      let {card, updatedCardsArray } = DrawCard(cardsArray);
+      setCardsArray(updatedCardsArray);
+      ShowNewCard(card);
+      return true;
+    }
   }
 
   function handleChangeTurn() {
@@ -144,26 +160,29 @@ function MatchContainer({clientID}){
   function handleNewTurn() {
     setBreakTime(false);
     setCurrentTurn(currentTurn + 1);
+    setPassPerTurn(rules.passPerTurn);
     handleNewCard();
   }
 
   //FUNZIONI PER ASSEGNARE I PUNTEGGI DAI PULSANTI
   function addPoint(){
-    if (currentTeam == "red") {
-      setRedScore(redScore + 1);
-    } else if (currentTeam == "blue") {
-      setBlueScore(blueScore + 1);
+    if (handleNewCard()) {
+      if (currentTeam == "red") {
+        setRedScore(redScore + 1);
+      } else if (currentTeam == "blue") {
+        setBlueScore(blueScore + 1);
+      }
     }
-    handleNewCard();
   }
   
   function subtractPoint(){
-    if (currentTeam == "red") {
-      setRedScore(redScore - 1);
-    } else if (currentTeam == "blue") {
-      setBlueScore(blueScore - 1);
+    if (handleNewCard()) {
+      if (currentTeam == "red") {
+        setRedScore(redScore - 1);
+      } else if (currentTeam == "blue") {
+        setBlueScore(blueScore - 1);
+      }
     }
-    handleNewCard();
   }
   
   function skipCard(){
@@ -174,7 +193,6 @@ function MatchContainer({clientID}){
       alert("You can't skip anymore cards!");
       //TODO: aggiungere un suono
     }
-    handleNewCard();
   }
 
   switch (breakTime) {
@@ -238,13 +256,8 @@ function CardsFromJsonToArray(json, array) {
 
   //FUNZIONE PER PRELEVARE UNA CARTA DAL MAZZO
   function DrawCard(array) {
-    if (array.length == 0) {
-      console.log("Before ShuffleCards: " + JSON.stringify(localCardsArray.length, null, 2))
-      //await RefillCardsArray();
-      console.log("New ShuffleCards: " + JSON.stringify(cardsArray.length, null, 2))
-    }
-    const card = array.pop();
-    return { card, updatedCardsArray: array };
+      const card = array.pop();
+      return { card, updatedCardsArray: array };
   }
   //FUNZIONE PER VISUALIZZARE UNA NUOVA CARTA
   function ShowNewCard(card) { //ShowNewCard(SetCardsArray(DrawCard(cardsArray)))
@@ -253,9 +266,6 @@ function CardsFromJsonToArray(json, array) {
     console.log("CardWord: " + cardWord);
     setTabooWords(card.tabooWords);
     console.log("TabooWords: " + tabooWords);
-  }
-  function RefillCardsArray() {
-    setCardsArray(ShuffleCards(localCardsArray));
   }
 }
 export default MatchContainer;

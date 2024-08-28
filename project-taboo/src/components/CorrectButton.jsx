@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 function CorrectButton({onAddPoint}){
-    const correctAudio = new Audio("../assets/gotitem.mp3");
+    const correctAudio = new Audio("/assets/gotitem.mp3");
     
     return (
         <button id="correctButton" onClick={() => {

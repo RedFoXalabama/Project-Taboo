@@ -10,8 +10,7 @@
 body {
     overflow-y: scroll;
     /*overflow-x: hidden;*/
-    font-family: "Readex Pro", sans-serif;
-    
+    font-family: "Readex Pro", sans-serif;   
 }
 
 
@@ -437,7 +436,7 @@ input[type=number] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("../public/assets/carta_bordo_esterno.png");
+    background-image: url("/assets/carta_bordo_esterno.png");
     border-radius: 60px;
     background-size: 100% 100%;
     background-color: white;
@@ -454,7 +453,7 @@ input[type=number] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../public/assets/carta_bordo_interno_rosso.png");
+    background-image: url("/assets/carta_bordo_interno_rosso.png");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     width: 300px;
@@ -669,5 +668,5 @@ input[type=number] {
 /*KEYFRAMES*/
 @keyframes buttonAnimation {
     from {transform: rotate(2deg)} to {transform: rotate(-2deg)}
-};
+}
 

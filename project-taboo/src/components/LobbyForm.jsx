@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
+import { getURL } from '../scripts/utility';
 
 function LobbyForm({onStartMatch, clientID}) {
     
@@ -26,7 +27,7 @@ function LobbyForm({onStartMatch, clientID}) {
                 turnTime : turnTime,
                 passPerTurn: passRange,
             };
-            const response = await fetch('http://localhost:3000/api/rules/addRules/', {
+            const response = await fetch(getURL("/rules/addRules/"), {
               method: 'POST',
               body: JSON.stringify(data),
               headers: {
