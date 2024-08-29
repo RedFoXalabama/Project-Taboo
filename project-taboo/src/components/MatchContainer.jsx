@@ -10,7 +10,7 @@ import ChangeTurnButton from "./ChangeTurnButton";
 import {useGameState, useCardWords, useTeamsScore} from "../scripts/store.js";
 import { getURL } from '../scripts/utility';
 
-function MatchContainer({clientID}){
+function MatchContainer({clientID, onHandleEndMatch}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE
   const [cardsArray, setCardsArray] = useState([]);
   const [localCardsArray, setLocalCardsArray] = useState([]);
@@ -29,7 +29,7 @@ function MatchContainer({clientID}){
   const {redScore, setRedScore, blueScore, setBlueScore} = useTeamsScore();
   const [currentTurn, setCurrentTurn] = useState(0);
   const [breakTime, setBreakTime] = useState(false);
-  const { gameState, setGameState, currentTeam, setCurrentTeam } = useGameState();
+  const { currentTeam, setCurrentTeam, setWinningTeam } = useGameState();
   const { cardWord, tabooWords, setCardWords, setTabooWords } = useCardWords();
 
   //PRELEVA LE CARTE DAL SERVER
@@ -108,8 +108,16 @@ function MatchContainer({clientID}){
     setRulesReady(true);
   }, [rules]);
 
-  useEffect(() => { //FUNZIONE CHIAMATA PER INIZIALIZZARE IL TURNo
+  useEffect(() => { //FUNZIONE CHIAMATA PER INIZIALIZZARE IL TURNO
     if (rulesReady && cardsReady) {
+      //RESETTA I PUNTEGGI E IL TURNO
+      setCurrentTurn(0);
+      setCurrentTeam("red");
+      setWinningTeam("");
+      setBreakTime(false);
+      setRedScore(0);
+      setBlueScore(0);
+      //INIZIA PARTITA
       handleNewTurn();
     }
   }, [rulesReady, cardsReady]);
@@ -118,11 +126,15 @@ function MatchContainer({clientID}){
       if (currentTurn == turnNumber*playerNumber + 1 && currentTurn > 1) {
         if (redScore > blueScore) {
           alert("Red Team Wins!");
+          setWinningTeam("RED");
         } else if (redScore < blueScore) {
           alert("Blue Team Wins!");
+          setWinningTeam("BLUE");
         } else {
           alert("It's a tie!");
+          setWinningTeam("TIE");
         }
+        onHandleEndMatch();
       } else if (currentTurn <= turnNumber*playerNumber && currentTurn != 0) {
         console.log("Turno: " + currentTurn);
         if (currentTurn % 2 == 0) {
