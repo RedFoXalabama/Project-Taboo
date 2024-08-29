@@ -7,30 +7,30 @@ function EndMatch({onHandleBackToIndex, onHandleStartGame}){
         case "RED":
             return (
                 <div>
-                    <h1>VINCE LA SQUADRA ROSSA</h1>
+                    <h1 className="winningText" >VINCE LA SQUADRA <span id="redWins">ROSSA</span></h1>
                     <div id="EndMatchButtonContainer">
-                        <button onClick={onHandleBackToIndex}>Torna alla Home</button>
-                        <button onClick={onHandleStartGame}>Rigioca</button>
+                        <button id="goBackHomeAfterMatch" onClick={onHandleBackToIndex}>TORNA ALLA HOME</button>
+                        <button id="playAgainButton" onClick={onHandleStartGame}>GIOCA DI NUOVO</button>
                     </div> 
                 </div>
             );
         case "BLUE":
             return (
                 <div>
-                    <h1>VINCE LA SQUADRA BLU</h1>
+                    <h1 className="winningText" >VINCE LA SQUADRA <span id="blueWins" >BLU</span></h1>
                     <div id="EndMatchButtonContainer">
-                        <button onClick={onHandleBackToIndex}>Torna alla Home</button>
-                        <button onClick={onHandleStartGame}>Rigioca</button>
+                        <button id="goBackHomeAfterMatch" onClick={onHandleBackToIndex}>TORNA ALLA HOME</button>
+                        <button id="playAgainButton" onClick={onHandleStartGame}>GIOCA DI NUOVO</button>
                     </div> 
                 </div>
             );
         case "TIE":
             return (
                 <div>
-                    <h1>É UN PAREGGIO</h1>
+                    <h1 className="winningText" >É UN PAREGGIO</h1>
                     <div id="EndMatchButtonContainer">
-                        <button onClick={onHandleBackToIndex}>Torna alla Home</button>
-                        <button onClick={onHandleStartGame}>Rigioca</button>
+                        <button id="goBackHomeAfterMatch" onClick={onHandleBackToIndex}>TORNA ALLA HOME</button>
+                        <button id="playAgainButton" onClick={onHandleStartGame}>GIOCA DI NUOVO</button>
                     </div> 
                 </div>
             );

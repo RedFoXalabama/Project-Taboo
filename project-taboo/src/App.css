@@ -508,7 +508,7 @@ input[type=number] {
     flex-grow: 1;
     padding: 1em;
     font-weight: bold;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     transition-property: all;
     transition-duration: 0.4s;
 }
@@ -519,7 +519,7 @@ input[type=number] {
     flex-grow: 1;
     padding: 1em;
     font-weight: bold;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     transition-property: all;
     transition-duration: 0.4s;
 }
@@ -528,29 +528,20 @@ input[type=number] {
     font-size: 2em;
 }
 
-/*EVENTI CHE ACCADRANNO SUL CAMBIO TURNO, MOMENTANEAMENTE SU HOVER*/
-
-#redPoints:hover {
-    transform: scale(0.8);
-    opacity: 0.6;
-}
-
-#bluePoints:hover {
-    transform: scale(0.8);
-    opacity: 0.6;
-}
-
 /*STILE DEL TEMPO*/
 
 #matchTime {
+    color: #111111;
     border: #000000 solid 10px;
-    width: fit-content;
-    height: fit-content;
+    background-color: white;
+    width: 3em;
+    height: 2em;
     padding: 2em;
     font-weight: bold;
     border-radius: 100px;
     margin: 20px;
     grid-area: time;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 /*STILE DEI PULSANTI DEL MATCH*/
@@ -656,8 +647,113 @@ input[type=number] {
 }
 
 #changeTurnButton {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 40px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #01071A;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #FFBF00;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-duration: 0.4s;
+    transition-property: all;
+    margin: 25px auto;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #e4ab01;
+    white-space: nowrap;
 }
+
+#changeTurnButton:hover {
+    box-shadow: 0px 0px 10px 3px #e8c607;
+    transform: scale(1.05);
+}
+
+/*STILE DELLA FINE DEL MATCH*/
+
+#EndMatchButtonContainer {
+    margin: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 3em;
+}
+
+#playAgainButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 50px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    color: #01071A;
+    font-weight: bold;
+    font-size: 20px;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #f9d402;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
+    transition-duration: 0.4s;
+    margin: 10px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #d7b701;
+}
+
+#playAgainButton:hover {
+    box-shadow: 0px 0px 10px 3px #e8c607;
+    transform: scale(1.05);
+}
+
+#goBackHomeAfterMatch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 320px;
+    height: 50px;
+    cursor: pointer;
+    /*ASPETTI GRAFICI DELLA SCRITTA*/
+    font-family: "Readex Pro", sans-serif;
+    color: #01071A;
+    font-weight: bold;
+    font-size: 20px;
+    /*ASPETTI GRAFICI DEL BOTTONE*/
+    background-color: #E574BC;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    transition-property: all;
+    transition-duration: 0.4s;
+    margin: 10px;
+    border-radius: 15px;
+    border: 0px;
+    border-bottom: 4px solid #c5559c;
+}
+
+#goBackHomeAfterMatch:hover {
+    box-shadow: 0px 0px 10px 3px #E574BC;
+    transform: scale(1.05);
+}
+
+h1.winningText {
+    text-shadow: 2px 2px 1px black;
+}
+
+#redWins {
+    color: #F71735;
+}
+
+#blueWins {
+    color: #3094ff;
+}
+
 
 
 /*KEYFRAMES*/
