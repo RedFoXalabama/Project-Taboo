@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from "react";
 import { useGameState } from "../scripts/store";
 
 function EndMatch({onHandleBackToIndex, onHandleStartGame}){
-    const { winningTeam } = useGameState();
+    const {setGameId , winningTeam } = useGameState();
+
+    useEffect(() => {
+        setGameId({id: null, new: false});
+    }, []);
+    
     switch(winningTeam){
         case "RED":
             return (

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from 'react'
 import { getURL } from '../scripts/utility';
+import { useGameState } from '../scripts/store';
 
 function LobbyForm({onStartMatch, clientID}) {
     
@@ -10,6 +11,7 @@ function LobbyForm({onStartMatch, clientID}) {
     const [turnRange, setTurnRange] = useState(1);
     const [passRange, setPassRange] = useState(0);
     const [turnTime, setTurnTime] = useState(3);
+    const { setGameId } = useGameState();
 
     const updatePlayerInputs = (numPlayers) => {
         setRedPlayers(Array(numPlayers).fill(''));
@@ -35,7 +37,9 @@ function LobbyForm({onStartMatch, clientID}) {
               },
             });
             if (response.ok) {
-              console.log(response.json());
+                const jsonResponse = await response.json();
+                console.log("Response JSON:", JSON.stringify(jsonResponse)); // Log della risposta JSON
+                setGameId({id: jsonResponse._id, new: true});
             } else {
               throw new Error('Request failed!');
             }

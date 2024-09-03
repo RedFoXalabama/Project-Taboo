@@ -18,6 +18,7 @@ exports.addRules = async (req,res) => {
         });
         console.log(rules);
         rules.save();
+        res.json(rules);
     } catch (err) {
         res.status(500).json({msg: "error", err: err})
     }
@@ -25,8 +26,8 @@ exports.addRules = async (req,res) => {
 
 exports.getRulesByID = async (req,res) => {
         try {
-            console.log(req.body.clientID );
-            const rules = await Rule.findOne({ clientID: req.body.clientID });
+            console.log(req.body.gameId.id );
+            const rules = await Rule.findOne({ _id: req.body.gameId.id });
             res.status(200).json(rules);
         } catch (err) {
             res.status(500).json({msg: "error", err: err})

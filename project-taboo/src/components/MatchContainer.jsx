@@ -32,6 +32,15 @@ function MatchContainer({clientID, onHandleEndMatch}){
   const { currentTeam, setCurrentTeam, setWinningTeam } = useGameState();
   const { cardWord, tabooWords, setCardWords, setTabooWords } = useCardWords();
 
+
+
+  const {gameId} = useGameState();
+  useEffect(() => {
+    console.log("gameID: " + gameId);
+})
+
+
+
   //PRELEVA LE CARTE DAL SERVER
   useEffect(() => {
     const getCardsFromServer = async () => {
@@ -66,46 +75,50 @@ function MatchContainer({clientID, onHandleEndMatch}){
 
   //PRELEVA LE REGOLE DAL SERVER
   useEffect(()=>{
-    const getRulesFromServer = async (clientID) => {
-      try {
-        console.log("Sending request with clientID:" + JSON.stringify({clientID}));
-        const response = await fetch(getURL("/rules/getRulesByID/"), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(clientID),
-        });
-        if (response.ok) {
-          return await response.json();
-        } else {
-          throw new Error('Request failed!');
+    if(gameId.id != null && gameId.new == true){
+      const getRulesFromServer = async (gameId) => {
+        try {
+          //console.log("Sending request with gameId:" + gameId.id);
+          
+          const response = await fetch(getURL("/rules/getRulesByID/"), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(gameId),
+          });
+          if (response.ok) {
+            return await response.json();
+          } else {
+            throw new Error('Request failed!');
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
-    };
+      };
+  
+      const fetchAndSetRules = async () => {
+        const rulesJSON = await getRulesFromServer({gameId});
+        setRules(rulesJSON);
+      };
+  
+      fetchAndSetRules();
+      console.log("Rules: " + JSON.stringify(rules, null, 2));
+    }
 
-    const fetchAndSetRules = async () => {
-      const rulesJSON = await getRulesFromServer({clientID});
-      setRules(rulesJSON);
-    };
-
-    fetchAndSetRules();
-    console.log("Rules: " + JSON.stringify(rules, null, 2)); 
-  }, []);
+  }, [gameId]);
 
   //AGGIORNAMENTO DELLO STATO DELLA PARTITA
   useEffect(() => {
-    if (rules) {
+    if (rules.length != 0) {
       setPlayerNumber(rules.playerNumber);
       setRedTeam(rules.redTeam);
       setBlueTeam(rules.blueTeam);
       setTurnNumber(rules.turnNumber);
       setTurnTime(rules.turnTime);
       setPassPerTurn(rules.passPerTurn);
+      setRulesReady(true);
     }
-    setRulesReady(true);
   }, [rules]);
 
   useEffect(() => { //FUNZIONE CHIAMATA PER INIZIALIZZARE IL TURNO

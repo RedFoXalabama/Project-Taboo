@@ -1,9 +1,11 @@
 import { create } from 'zustand'
 
 const useGameState = create((set) => ({
+    gameId: {id: null, new: false },
     gameState: "lobby", //lobby: waiting for players, playing: game in progress, end: game ended
     currentTeam: "red",
     winningTeam: "",
+    setGameId: (gameId) => set({ gameId }),
     setGameState: (gameState) => set({ gameState }),
     setCurrentTeam: (currentTeam) => set({ currentTeam }),
     setWinningTeam: (winningTeam) => set({ winningTeam })
