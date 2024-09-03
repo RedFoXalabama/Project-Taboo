@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import LobbyForm from './LobbyForm.jsx';
 
-function FormContainer({onStartMatch, onBackToIndex, clientID}) {
+function FormContainer({onStartMatch, onBackToIndex}) {
   return (
     <div id="lobbyMain">
           <div id="matchFormContainer">
@@ -10,7 +10,7 @@ function FormContainer({onStartMatch, onBackToIndex, clientID}) {
             onBackToIndex();
           }}
             ><span>TORNA ALLA HOME</span></button>
-        <LobbyForm onStartMatch={onStartMatch} clientID={clientID}/>
+        <LobbyForm onStartMatch={onStartMatch} />
     </div>
     </div>
   );

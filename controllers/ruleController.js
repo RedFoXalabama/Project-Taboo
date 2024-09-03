@@ -6,7 +6,6 @@ const Rule = mongoose.model("Rule", ruleSchema, "Rules");
 exports.addRules = async (req,res) => {
     try {
         const rules = new Rule({
-            clientID: req.body.clientID,
             playerNumber: req.body.playerNumber,
             redTeam: req.body.redTeam,
             blueTeam: req.body.blueTeam,

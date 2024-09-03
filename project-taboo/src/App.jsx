@@ -11,7 +11,6 @@ import {useGameState} from './scripts/store.js';
 
 function App() {
   const [page, setPage] = useState("index");
-  const [clientID, setClientID] = useState(Math.floor(Math.random() * 10001)); //random number between 0 and 10000
   const {gameState, currentTeam, setGameState} = useGameState();
   const {winningTeam} = useGameState();
 
@@ -58,7 +57,7 @@ function App() {
         return (
           <>
           <Header imgID={handleHeaderImgID()}/>
-          <FormContainer onStartMatch={handleStartMatch} onBackToIndex={handleBackToIndex} clientID={clientID}/>
+          <FormContainer onStartMatch={handleStartMatch} onBackToIndex={handleBackToIndex} />
           <Footer />
         </>
         )
@@ -66,7 +65,7 @@ function App() {
         return (
           <>
           <Header imgID={handleHeaderImgID()}/>
-          <MatchContainer clientID={clientID} onHandleEndMatch={handleEndMatch} />
+          <MatchContainer onHandleEndMatch={handleEndMatch} />
           <Footer />
         </>
         )

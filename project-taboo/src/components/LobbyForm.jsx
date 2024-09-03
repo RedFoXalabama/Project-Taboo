@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { getURL } from '../scripts/utility';
 import { useGameState } from '../scripts/store';
 
-function LobbyForm({onStartMatch, clientID}) {
+function LobbyForm({onStartMatch}) {
     
     const [numPlayers, setNumPlayers] = useState(2);
     const [redPlayers, setRedPlayers] = useState(['','']);
@@ -21,7 +21,6 @@ function LobbyForm({onStartMatch, clientID}) {
     async function SendDataToServer() {
         try {
             const data = {
-                clientID: clientID,
                 playerNumber: numPlayers*2,
                 redTeam : redPlayers,
                 blueTeam: bluePlayers,

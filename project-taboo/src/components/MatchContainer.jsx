@@ -10,7 +10,7 @@ import ChangeTurnButton from "./ChangeTurnButton";
 import {useGameState, useCardWords, useTeamsScore} from "../scripts/store.js";
 import { getURL } from '../scripts/utility';
 
-function MatchContainer({clientID, onHandleEndMatch}){
+function MatchContainer({onHandleEndMatch}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE
   const [cardsArray, setCardsArray] = useState([]);
   const [localCardsArray, setLocalCardsArray] = useState([]);
