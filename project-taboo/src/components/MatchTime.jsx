@@ -5,21 +5,20 @@ import Countdown from 'react-countdown';
 
 function MatchTime({turnTime, handleChangeTurn}) {
   const [isCompleted, setIsCompleted] = useState(false);
-  let time = turnTime *1000;
-  const [date, setDate] = useState(Date.now() + time);
-
-    useEffect(() => {
+  let time = turnTime *1000; // convert to milliseconds
+  const [date] = useState(Date.now() + time);
+  
+    useEffect(() => { //Se il countdown è completato, cambia il turno
       if (isCompleted) {
           handleChangeTurn();
       }
   }, [isCompleted]);
 
     const renderer = ({ minutes, seconds, completed }) => {
+      //se è completato ritorna null, altrimenti ritorna il countdown
         if (completed) {
-            // Render a complete state
             return null;
-          } else {
-            // Render a countdown
+          } else { 
             return (
               <span>
                 {minutes}:{seconds}
@@ -28,10 +27,12 @@ function MatchTime({turnTime, handleChangeTurn}) {
           }
     };
 
+    //Funzione che si attiva quando il countdown è completato
     const handleComplete = () => {
       setIsCompleted(true);
     };
 
+    //RENDERIZZA IL COUNTDOWN
     return (
         <div id="matchTime">
             <Countdown date={date} renderer={renderer} onComplete={handleComplete}>

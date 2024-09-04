@@ -12,36 +12,32 @@ import { getURL } from '../scripts/utility';
 
 function MatchContainer({onHandleEndMatch}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE
-  const [cardsArray, setCardsArray] = useState([]);
-  const [localCardsArray, setLocalCardsArray] = useState([]);
+  const [cardsArray, setCardsArray] = useState([]); //array di carte per il mazzo, viene inizializzato con le carte prelevate dal server e si modifica durante la partita
+  const [localCardsArray, setLocalCardsArray] = useState([]); //array di carte locale per il rifornimento del mazzo
   const [deckState, setDeckState] = useState(false); // FALSE = PIENO, TRUE = VUOTO
-  const [rules, setRules] = useState([]);
-  const [cardsReady, setCardsReady] = useState(false);
-  const [rulesReady, setRulesReady] = useState(false);
+  const [rules, setRules] = useState([]); //array di regole per la partita
+  const [cardsReady, setCardsReady] = useState(false); // FALSE = NON PRONTE, TRUE = PRONTE
+  const [rulesReady, setRulesReady] = useState(false); // FALSE = NON PRONTE, TRUE = PRONTE
 
   //STATI PER LA GESTIONE DELLA PARTITA
-  const [playerNumber, setPlayerNumber] = useState(0);
-  const [redTeam, setRedTeam] = useState([]);
-  const [blueTeam, setBlueTeam] = useState([]);
-  const [turnNumber, setTurnNumber] = useState(0);
-  const [turnTime, setTurnTime] = useState(0);
-  const [passPerTurn, setPassPerTurn] = useState(0);
-  const {redScore, setRedScore, blueScore, setBlueScore} = useTeamsScore();
-  const [currentTurn, setCurrentTurn] = useState(0);
-  const [breakTime, setBreakTime] = useState(false);
-  const { currentTeam, setCurrentTeam, setWinningTeam } = useGameState();
-  const { cardWord, tabooWords, setCardWords, setTabooWords } = useCardWords();
+  const [playerNumber, setPlayerNumber] = useState(0); //numero di giocatori totale
+  const [redTeam, setRedTeam] = useState([]); //array di giocatori del team rosso
+  const [blueTeam, setBlueTeam] = useState([]); //array di giocatori del team blu
+  const [turnNumber, setTurnNumber] = useState(0); //numero di turni
+  const [turnTime, setTurnTime] = useState(0); //tempo per turno
+  const [passPerTurn, setPassPerTurn] = useState(0); //pass per turno
+  const {redScore, setRedScore, blueScore, setBlueScore} = useTeamsScore(); //punteggi delle squadre
+  const [currentTurn, setCurrentTurn] = useState(0);  //turno attuale
+  const [breakTime, setBreakTime] = useState(false); // TRUE = CAMBIO DI TURNO, FALSE = SI STA GIOCANDO
+  const { currentTeam, setCurrentTeam, setWinningTeam } = useGameState(); //squadra attuale e squadra vincente
+  const { cardWord, tabooWords, setCardWords, setTabooWords } = useCardWords(); //parola e parole tabù della carta attuale
+  const {gameId} = useGameState(); //id della partita
 
-
-
-  const {gameId} = useGameState();
-  useEffect(() => {
+  useEffect(() => { //stampa dell'id della partita
     console.log("gameID: " + gameId);
-})
+  })
 
-
-
-  //PRELEVA LE CARTE DAL SERVER
+  //GET - PRELEVA LE CARTE DAL SERVER
   useEffect(() => {
     const getCardsFromServer = async () => {
       try {
@@ -73,8 +69,8 @@ function MatchContainer({onHandleEndMatch}){
     fetchAndSetCards();
   }, []);
 
-  //PRELEVA LE REGOLE DAL SERVER
-  useEffect(()=>{
+  //POST - PRELEVA LE REGOLE DAL SERVER
+  useEffect(()=>{ //viene chiamata ogni qual volta gameId viene modificato (quindi ogni volta che viene creata una nuova partita)
     if(gameId.id != null && gameId.new == true){
       const getRulesFromServer = async (gameId) => {
         try {
@@ -109,7 +105,7 @@ function MatchContainer({onHandleEndMatch}){
   }, [gameId]);
 
   //AGGIORNAMENTO DELLO STATO DELLA PARTITA
-  useEffect(() => {
+  useEffect(() => { //chiamata ogni volta che rules viene modificato
     if (rules.length != 0) {
       setPlayerNumber(rules.playerNumber);
       setRedTeam(rules.redTeam);
@@ -122,7 +118,7 @@ function MatchContainer({onHandleEndMatch}){
   }, [rules]);
 
   useEffect(() => { //FUNZIONE CHIAMATA PER INIZIALIZZARE IL TURNO
-    if (rulesReady && cardsReady) {
+    if (rulesReady && cardsReady) { //chiamata ogni volta che rulesReady e cardsReady vengono modificati, quindi quando entrambi sono true inizia la parita
       //RESETTA I PUNTEGGI E IL TURNO
       setCurrentTurn(0);
       setCurrentTeam("red");
@@ -136,6 +132,7 @@ function MatchContainer({onHandleEndMatch}){
   }, [rulesReady, cardsReady]);
 
   useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO DA TIMER
+    //chiamata ad ogni cambio di turno per gestire il cambio di squadra
       if (currentTurn == turnNumber*playerNumber + 1 && currentTurn > 1) {
         if (redScore > blueScore) {
           alert("Red Team Wins!");
@@ -158,39 +155,45 @@ function MatchContainer({onHandleEndMatch}){
       }
   }, [currentTurn]);
 
-  useEffect(() => {
+  useEffect(() => { //chiamata quando il mazzo è vuoto e quindi lo riaggiorna
     if (cardsArray.length == 0 || deckState) {
       console.log("RICARICO LO STOCK");
       setCardsArray(ShuffleCards(localCardsArray));
     }
   }, [deckState]);
 
+
+  //FUNZIONI
+
+  //PESCA E MOSTRA UNA NUOVA CARTA DAL MAZZO
   function handleNewCard(){
-    if (cardsArray.length == 0) {
+    if (cardsArray.length == 0) { //se il mazzo è vuoto non restituisce una nuova carta, ma riaggiorna il mazzo (bisogna ripremere il pulsante per pescare una nuova carta)
       alert("Deck is empty! -- REFILLING");
       setDeckState(true);
-      return false;
+      return false; //ritorna false per non incrementare il punteggio
     } else {
-      let {card, updatedCardsArray } = DrawCard(cardsArray);
-      setCardsArray(updatedCardsArray);
-      ShowNewCard(card);
-      return true;
+      let {card, updatedCardsArray } = DrawCard(cardsArray); //pesca una carta dal mazzo e restituisce la carta e il mazzo aggiornato (senza la carta pescata)
+      setCardsArray(updatedCardsArray); //aggiorna il mazzo con il mazzo aggiornato (senza la carta pescata)
+      ShowNewCard(card); //mostra la carta pescata
+      return true; //ritorna true per incrementare il punteggio
     }
   }
 
+  //FUNZIONI PER IL CAMBIO DI TURNO
   function handleChangeTurn() {
-    setBreakTime(true);
+    setBreakTime(true); //cambia lo stato del turno a breakTime=true per visualizzare il pulsante di cambio turno
   }
 
+  //FUNZIONE PER INIZIARE IL NUOVO TURNO
   function handleNewTurn() {
-    setBreakTime(false);
-    setCurrentTurn(currentTurn + 1);
-    setPassPerTurn(rules.passPerTurn);
-    handleNewCard();
+    setBreakTime(false); //cambia lo stato del turno a breakTime=false per visualizzare il timer e le carte
+    setCurrentTurn(currentTurn + 1); //incrementa il turno
+    setPassPerTurn(rules.passPerTurn); //resetta i pass per turno disponibili
+    handleNewCard(); //pesca una nuova carta
   }
 
   //FUNZIONI PER ASSEGNARE I PUNTEGGI DAI PULSANTI
-  function addPoint(){
+  function addPoint(){ //aggiunge un punto alla squadra corrente
     if (handleNewCard()) {
       if (currentTeam == "red") {
         setRedScore(redScore + 1);
@@ -200,7 +203,7 @@ function MatchContainer({onHandleEndMatch}){
     }
   }
   
-  function subtractPoint(){
+  function subtractPoint(){ //sottrae un punto alla squadra corrente
     if (handleNewCard()) {
       if (currentTeam == "red") {
         setRedScore(redScore - 1);
@@ -210,7 +213,7 @@ function MatchContainer({onHandleEndMatch}){
     }
   }
   
-  function skipCard(){
+  function skipCard(){ //salta la carta attuale e decrementa i pass per turno disponibili
     if (passPerTurn > 0) {
       setPassPerTurn(passPerTurn - 1);
       handleNewCard();
@@ -220,6 +223,7 @@ function MatchContainer({onHandleEndMatch}){
     }
   }
 
+  //RENDERING DEL CONTENITORE DELLA PARTITA
   switch (breakTime) {
     case true:
       return (
@@ -251,7 +255,8 @@ function MatchContainer({onHandleEndMatch}){
       }  
   }
 
-//FUNZIONI PER OPERARE SULLE CARTE
+
+//FUNZIONI PER OPERARE SULLE CARTE PRELEVATE DAL SERVER
 //CREAZIONE DI UN ARRAY DI CARTE DUPLICATO SU CUI LAVORARE
 function CardsFromJsonToArray(json, array) {
     return new Promise((resolve, reject) => {
@@ -270,6 +275,7 @@ function CardsFromJsonToArray(json, array) {
       }
     });
   }
+
   //SHUFFLING DELLE CARTE
   function ShuffleCards(cardsArray){
     let array = cardsArray;
@@ -280,12 +286,14 @@ function CardsFromJsonToArray(json, array) {
   }
 
   //FUNZIONE PER PRELEVARE UNA CARTA DAL MAZZO
-  function DrawCard(array) {
+  function DrawCard(array) { //pesco una nuova carta dal mazzo e restituisco la carta e il mazzo aggiornato
       const card = array.pop();
       return { card, updatedCardsArray: array };
   }
+
   //FUNZIONE PER VISUALIZZARE UNA NUOVA CARTA
   function ShowNewCard(card) { //ShowNewCard(SetCardsArray(DrawCard(cardsArray)))
+    //mostra la nuova carta aggiornando lo stato della parola e delle parole tabù
     console.log("Card: " + card.cardName);
     setCardWords(card.cardName);
     console.log("CardWord: " + cardWord);

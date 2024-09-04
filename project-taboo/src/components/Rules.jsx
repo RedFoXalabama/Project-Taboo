@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Paper } from '@mui/material'
 
-function Rules(props) {
+function Rules(props) { //REGOLE DEL GIOCO DA MOSTRARE NEL CAROUSEL, LE REGOLE SONO CONTENUTE IN Rules.json
     return (
         <div id="ruleContainer">
             <Paper id="rulePaper">

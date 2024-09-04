@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-function CorrectButton({onAddPoint}){
+function CorrectButton({onAddPoint}){ //PULSANTE PER AGGIUNGERE PUNTO (CARTA CORRETTA)
     const correctAudio = new Audio("/assets/gotitem.mp3");
     
     return (
         <button id="correctButton" onClick={() => {
-            onAddPoint();
+            onAddPoint(); //Aggiunta punto gestito da MatchContainer
             correctAudio.play();
             correctAudio.currentTime = 0;
         }}>

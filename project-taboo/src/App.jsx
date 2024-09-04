@@ -9,11 +9,12 @@ import MatchContainer from './components/MatchContainer.jsx';
 import EndMatch from './components/EndMatch.jsx';
 import {useGameState} from './scripts/store.js';
 
-function App() {
+function App() { //APP PRINCIPALE
   const [page, setPage] = useState("index");
   const {gameState, currentTeam, setGameState} = useGameState();
   const {winningTeam} = useGameState();
 
+  //FUNZIONI PER IL CAMBIO DELLO STATO DELLA PAGINA
   const handleBackToIndex = () => {
     setPage("index");
   }
@@ -42,6 +43,7 @@ function App() {
     }
   }
 
+  //FUNZIONE DI RENDERING DELLA PAGINA
   function pageRender(){
     switch (page) {
       case "index":
@@ -80,6 +82,7 @@ function App() {
       }
   }
 
+  //FUNZIONE PER IL CAMBIO DELLO SFONDO IN BASE ALLO STATO DELLA PARTITA
   function getBackground(){
     if (gameState == "playing") {
       if (currentTeam == "red") {
@@ -100,6 +103,7 @@ function App() {
     return "rgb(146,28,181) radial-gradient(circle, rgba(146,28,181,1) 0%, rgba(58,0,87,1) 100%)";  
   }
 
+  //RETURN DELLA PAGINA
   return (
     <div style={
       {

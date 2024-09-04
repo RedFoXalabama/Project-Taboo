@@ -11,15 +11,15 @@ const { argv } = require('node:process');
 const port = 3000;
 const path = "mongodb+srv://client:project-taboo-password@project-taboo-db.oajpkwv.mongodb.net/Project-Taboo-DB?retryWrites=true&w=majority&appName=Project-Taboo-DB";
 const app = express();
-const isDev = argv.find(arg => arg === "--dev") != null;
+const isDev = argv.find(arg => arg === "--dev") != null; //Variabile per gestire l'ambiente di sviluppo
 
 //MIDDLEWARE
-if (isDev) {
+if (isDev) { //Se è in ambiente di sviluppo, disabilita la protezione CORS poichè server sulla 3000 e sito sulla 5137, frontend e backend sono su porte diverse
   console.log("Running in development mode");
   app.use(cors());
 }
 app.use(express.json());
-app.use(express.static("project-taboo/dist" , {index: "index.html"}));
+app.use(express.static("project-taboo/dist" , {index: "index.html"})); //Serve la cartella dist come statica, frontend e backend sono sulla stessa porta
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use("/api/cards", cardRoutes);

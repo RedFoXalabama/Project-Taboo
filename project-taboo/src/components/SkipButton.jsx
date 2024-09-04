@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-function SkipButton({onSkipCard}){
+function SkipButton({onSkipCard}){ //BOTTONI PER SKIPPARE LE CARTE
     const skipAudio = new Audio("/assets/skip_button_sfx.mp3");
 
     return (
         <button id="skipButton" onClick={() => {
-            onSkipCard();
+            onSkipCard(); //chiama la funzione per skippare la carta gestita in App
             skipAudio.play();
             skipAudio.currentTime = 0;
         }} >

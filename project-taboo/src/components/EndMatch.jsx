@@ -2,14 +2,14 @@
 import { useEffect } from "react";
 import { useGameState } from "../scripts/store";
 
-function EndMatch({onHandleBackToIndex, onHandleStartGame}){
+function EndMatch({onHandleBackToIndex, onHandleStartGame}){ //PAGINA DI FINE PARTITA
     const {setGameId , winningTeam } = useGameState();
 
-    useEffect(() => {
+    useEffect(() => { //Resetto l'id della partita per evitare che si crei un nuovo match con le regole della partita precedente
         setGameId({id: null, new: false});
     }, []);
     
-    switch(winningTeam){
+    switch(winningTeam){ //AGGIORNAMENTO PAGINA IN BASE ALLA SQUADRA VINCITRICE
         case "RED":
             return (
                 <div>

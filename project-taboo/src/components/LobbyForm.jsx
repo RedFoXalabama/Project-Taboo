@@ -4,24 +4,26 @@ import { getURL } from '../scripts/utility';
 import { useGameState } from '../scripts/store';
 
 function LobbyForm({onStartMatch}) {
-    
+    //STATI DELLE REGOLE DA INVIARE AL SERVER
     const [numPlayers, setNumPlayers] = useState(2);
     const [redPlayers, setRedPlayers] = useState(['','']);
     const [bluePlayers, setBluePlayers] = useState(['','']);
     const [turnRange, setTurnRange] = useState(1);
     const [passRange, setPassRange] = useState(0);
-    const [turnTime, setTurnTime] = useState(3);
+    const [turnTime, setTurnTime] = useState(60);
     const { setGameId } = useGameState();
 
+    //FUNZIONE PER AGGIORNARE GLI INPUT DEI GIOCATORI
     const updatePlayerInputs = (numPlayers) => {
         setRedPlayers(Array(numPlayers).fill(''));
         setBluePlayers(Array(numPlayers).fill(''));
     };
 
+    //POST PER INVIARE I DATI AL SERVER
     async function SendDataToServer() {
         try {
             const data = {
-                playerNumber: numPlayers*2,
+                playerNumber: numPlayers*2, //Numero di giocatori totali
                 redTeam : redPlayers,
                 blueTeam: bluePlayers,
                 turnNumber: turnRange,
@@ -38,7 +40,7 @@ function LobbyForm({onStartMatch}) {
             if (response.ok) {
                 const jsonResponse = await response.json();
                 console.log("Response JSON:", JSON.stringify(jsonResponse)); // Log della risposta JSON
-                setGameId({id: jsonResponse._id, new: true});
+                setGameId({id: jsonResponse._id, new: true}); //Imposto l'id della partita per poterla recuperare successivamente
             } else {
               throw new Error('Request failed!');
             }
@@ -47,6 +49,7 @@ function LobbyForm({onStartMatch}) {
         }
     }
 
+    //RENDERING DELLA PAGINA
     return (
         <form id="matchForm" onSubmit={
             (e) => { 
@@ -100,7 +103,6 @@ function LobbyForm({onStartMatch}) {
             <output id="turnRangeOutput">{turnRange}</output>
             <p>Tempo per turno</p>
             <select id="turnTimeInput" name="turnTime" value={turnTime} onChange={(e) => setTurnTime(e.target.value)}>
-                <option value="3">3 secondi</option>
                 <option value="45">45 secondi</option>
                 <option value="60">1 minuto</option>
                 <option value="120">2 minuti</option>

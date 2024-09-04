@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-function TabooButton({onSubtractPoint}){
+function TabooButton({onSubtractPoint}){ //PULSANTE PER TOGLIERE UN PUNTO
     const tabooAudio = new Audio("/assets/taboo_button_sfx.mp3");
 
     return (
         <button id="tabooButton" onClick={ () => {
-            onSubtractPoint();
+            onSubtractPoint(); //Sottrazione gestita da MatchContainer
             tabooAudio.play();
             tabooAudio.currentTime = 0;
         }}>
