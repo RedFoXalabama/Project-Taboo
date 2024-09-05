@@ -20,6 +20,7 @@ function MatchContainer({onHandleEndMatch}){
   const [rules, setRules] = useState([]); //array di regole per la partita
   const [cardsReady, setCardsReady] = useState(false); // FALSE = NON PRONTE, TRUE = PRONTE
   const [rulesReady, setRulesReady] = useState(false); // FALSE = NON PRONTE, TRUE = PRONTE
+  const [playersReady, setPlayersReady] = useState(false); // FALSE = NON PRONTE, TRUE = PRONTE
 
   //STATI PER LA GESTIONE DELLA PARTITA
   //stati delle regole della partita
@@ -113,7 +114,7 @@ function MatchContainer({onHandleEndMatch}){
 
   //AGGIORNAMENTO DELLO STATO DELLA PARTITA
   useEffect(() => { //chiamata ogni volta che rules viene modificato
-    if (rules.length != 0) {
+    if (rules && rules.length != 0) {
       setPlayerNumber(rules.playerNumber);
       setRedTeam(rules.redTeam);
       setBlueTeam(rules.blueTeam);
@@ -124,26 +125,36 @@ function MatchContainer({onHandleEndMatch}){
     }
   }, [rules]);
 
-  useEffect(() => { //FUNZIONE CHIAMATA PER INIZIALIZZARE IL TURNO
-    if (rulesReady && cardsReady) { //chiamata ogni volta che rulesReady e cardsReady vengono modificati, quindi quando entrambi sono true inizia la parita
-      //RESETTA I PUNTEGGI E IL TURNO
-      setCurrentTurn(0);
-
+  useEffect(() => {
+    if (rulesReady){
       let tempPlayerArray = [];
       for (let i = 0; i < playerNumber/2; i++) {
         tempPlayerArray.push(redTeam[i]);
         tempPlayerArray.push(blueTeam[i]);
       }
       setAllPlayers(tempPlayerArray); //array di tutti i giocatori
+    }
+  }, [rulesReady]);
+
+  useEffect(()=>{
+    if (allPlayers.length != 0) {
+      setPlayersReady(true);
+    }
+  }, [allPlayers]);
+
+  useEffect(() => { //FUNZIONE CHIAMATA PER INIZIALIZZARE IL TURNO
+    if (playersReady && cardsReady) { //chiamata ogni volta che rulesReady e cardsReady vengono modificati, quindi quando entrambi sono true inizia la parita
+      //RESETTA I PUNTEGGI E IL TURNO
+      setCurrentTurn(0);
       setCurrentTeam("red");
       setWinningTeam("");
-      setBreakTime(false);
+      changeCurrentPlayer(); //cambia il giocatore attuale
       setRedScore(0);
       setBlueScore(0);
       //INIZIA PARTITA
-      handleNewTurn();
+      setBreakTime(true); //cambia lo stato del turno a breakTime=true per visualizzare il pulsante di cambio turno per iniziare la partita
     }
-  }, [rulesReady, cardsReady]);
+  }, [playersReady, cardsReady]);
 
   useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO
     //chiamata ad ogni cambio di turno per gestire il cambio di squadra
@@ -162,12 +173,11 @@ function MatchContainer({onHandleEndMatch}){
       } else if (currentTurn <= turnNumber*playerNumber && currentTurn != 0) {
         console.log("Turno: " + currentTurn);
         console.log("AllPlayers: " + JSON.stringify(allPlayers, null, 2));
+        changeCurrentPlayer(); //cambia il giocatore attuale
         if (currentTurn % 2 == 0) {
           setCurrentTeam("blue");
-          setCurrentPlayer(allPlayers[currentTurn-1]);
         } else {
           setCurrentTeam("red");
-          setCurrentPlayer(allPlayers[currentTurn-1]);
         }
       }
   }, [currentTurn]);
@@ -237,6 +247,15 @@ function MatchContainer({onHandleEndMatch}){
     } else {
       alert("You can't skip anymore cards!");
       //TODO: aggiungere un suono
+    }
+  }
+
+  //GESTIONE NOMI GIOCATORI
+  function changeCurrentPlayer(){
+    if (allPlayers[currentTurn] == undefined) {
+      setCurrentPlayer("PARTITA TERMINATA");
+    } else {
+      setCurrentPlayer("É il turno di " + allPlayers[currentTurn]);
     }
   }
 

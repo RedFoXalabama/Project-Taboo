@@ -2,7 +2,7 @@
 function NamePlayerTurn({playerName}){
     return (
         <div>
-            <h1>É il turno di {playerName}</h1>
+            <h1>{playerName}</h1>
         </div>
     )
 }
