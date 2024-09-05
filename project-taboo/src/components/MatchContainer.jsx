@@ -7,8 +7,10 @@ import CorrectButton from "./CorrectButton.jsx";
 import MatchTime from "./MatchTime.jsx";
 import MatchPoints from "./MatchPoints.jsx";
 import ChangeTurnButton from "./ChangeTurnButton";
+import NamePlayerTurn from "./NamePlayerTurn.jsx";
 import {useGameState, useCardWords, useTeamsScore} from "../scripts/store.js";
 import { getURL } from '../scripts/utility';
+import { set } from "mongoose";
 
 function MatchContainer({onHandleEndMatch}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE
@@ -20,12 +22,17 @@ function MatchContainer({onHandleEndMatch}){
   const [rulesReady, setRulesReady] = useState(false); // FALSE = NON PRONTE, TRUE = PRONTE
 
   //STATI PER LA GESTIONE DELLA PARTITA
+  //stati delle regole della partita
   const [playerNumber, setPlayerNumber] = useState(0); //numero di giocatori totale
   const [redTeam, setRedTeam] = useState([]); //array di giocatori del team rosso
   const [blueTeam, setBlueTeam] = useState([]); //array di giocatori del team blu
   const [turnNumber, setTurnNumber] = useState(0); //numero di turni
   const [turnTime, setTurnTime] = useState(0); //tempo per turno
   const [passPerTurn, setPassPerTurn] = useState(0); //pass per turno
+
+  //stati della partita
+  const [allPlayers, setAllPlayers] = useState([]); //array di tutti i giocatori
+  const [currentPlayer, setCurrentPlayer] = useState(""); //giocatore attuale
   const {redScore, setRedScore, blueScore, setBlueScore} = useTeamsScore(); //punteggi delle squadre
   const [currentTurn, setCurrentTurn] = useState(0);  //turno attuale
   const [breakTime, setBreakTime] = useState(false); // TRUE = CAMBIO DI TURNO, FALSE = SI STA GIOCANDO
@@ -121,6 +128,13 @@ function MatchContainer({onHandleEndMatch}){
     if (rulesReady && cardsReady) { //chiamata ogni volta che rulesReady e cardsReady vengono modificati, quindi quando entrambi sono true inizia la parita
       //RESETTA I PUNTEGGI E IL TURNO
       setCurrentTurn(0);
+
+      let tempPlayerArray = [];
+      for (let i = 0; i < playerNumber/2; i++) {
+        tempPlayerArray.push(redTeam[i]);
+        tempPlayerArray.push(blueTeam[i]);
+      }
+      setAllPlayers(tempPlayerArray); //array di tutti i giocatori
       setCurrentTeam("red");
       setWinningTeam("");
       setBreakTime(false);
@@ -131,7 +145,7 @@ function MatchContainer({onHandleEndMatch}){
     }
   }, [rulesReady, cardsReady]);
 
-  useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO DA TIMER
+  useEffect(() => { //FUNZIONE CHIAMATA PER AGGIORNAMENTO DEL TURNO
     //chiamata ad ogni cambio di turno per gestire il cambio di squadra
       if (currentTurn == turnNumber*playerNumber + 1 && currentTurn > 1) {
         if (redScore > blueScore) {
@@ -147,10 +161,13 @@ function MatchContainer({onHandleEndMatch}){
         onHandleEndMatch();
       } else if (currentTurn <= turnNumber*playerNumber && currentTurn != 0) {
         console.log("Turno: " + currentTurn);
+        console.log("AllPlayers: " + JSON.stringify(allPlayers, null, 2));
         if (currentTurn % 2 == 0) {
           setCurrentTeam("blue");
+          setCurrentPlayer(allPlayers[currentTurn-1]);
         } else {
           setCurrentTeam("red");
+          setCurrentPlayer(allPlayers[currentTurn-1]);
         }
       }
   }, [currentTurn]);
@@ -228,6 +245,9 @@ function MatchContainer({onHandleEndMatch}){
     case true:
       return (
         <div id="matchContainer">
+                <div id="NamePlayerTurnContainer">
+                  <NamePlayerTurn playerName={currentPlayer} />
+                </div>
                 <div id="timeCardPoints">
                   <MatchPoints />
                 </div>
