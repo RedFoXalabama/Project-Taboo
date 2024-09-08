@@ -26,7 +26,8 @@
             "element5": "Quando il timer inizia, il suggeritore descrive la parola misteriosa della carta che gli viene mostrata. Se qualcuno della sua squadra indovina la parola, il suggeritore preme il pulsante INDOVINATA per passare alla carta successiva, fino allo scadere del tempo.",
             "element6": "Il suggeritore ha inoltre a disposizione un determinato numero di PASSO (che viene decretato in fase di creazione della partita), e può usarli per \"saltare\" la carta corrente e passare alla successiva senza perdere alcun punto.",
             "element7": "Se il suggeritore viene buzzato per aver usato una parola taboo, oppure utilizza uno o più PASSO in più rispetto al numero massimo consentito nel turno, la sua squadra perde 1 punto (-1 per ogni BUZZ e per ogni passo \"irregolare\" in più)."
-        }
+        },
+        "imgSRC": "/assets/SvolgimentoDelGioco.jpg"
     },
     {
         "id": 4,
@@ -52,6 +53,7 @@
             "element5": "Nella schermata della partita, visualizzerete la carta corrente, e rispettivamente il pulsante TABOO, il pulsante PASSO e il pulsante INDOVINATA.",
             "element6": "In alto verrà mostrato il tempo rimanente del turno, insieme al punteggio corrente delle rispettive squadre.",
             "element7": "Quando un turno si conclude, dovrete cliccare su un pulsante apposito per passare al turno successivo."
-        }
+        },
+        "imgSRC": "/assets/DettagliWeb.png"
     }
 ]
