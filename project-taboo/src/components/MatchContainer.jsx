@@ -128,9 +128,11 @@ function MatchContainer({onHandleEndMatch}){
   useEffect(() => {
     if (rulesReady){
       let tempPlayerArray = [];
-      for (let i = 0; i < playerNumber/2; i++) {
-        tempPlayerArray.push(redTeam[i]);
-        tempPlayerArray.push(blueTeam[i]);
+      for (let j=0; j < turnNumber; j++) {
+        for (let i = 0; i < playerNumber/2; i++) {
+          tempPlayerArray.push(redTeam[i]);
+          tempPlayerArray.push(blueTeam[i]);
+        }
       }
       setAllPlayers(tempPlayerArray); //array di tutti i giocatori
     }

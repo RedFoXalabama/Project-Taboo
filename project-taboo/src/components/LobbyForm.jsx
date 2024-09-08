@@ -10,7 +10,7 @@ function LobbyForm({onStartMatch}) {
     const [bluePlayers, setBluePlayers] = useState(['','']);
     const [turnRange, setTurnRange] = useState(1);
     const [passRange, setPassRange] = useState(0);
-    const [turnTime, setTurnTime] = useState(60);
+    const [turnTime, setTurnTime] = useState(3);
     const { setGameId } = useGameState();
 
     //FUNZIONE PER AGGIORNARE GLI INPUT DEI GIOCATORI
