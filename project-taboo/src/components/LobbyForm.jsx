@@ -103,6 +103,7 @@ function LobbyForm({onStartMatch}) {
             <output id="turnRangeOutput">{turnRange}</output>
             <p>Tempo per turno</p>
             <select id="turnTimeInput" name="turnTime" value={turnTime} onChange={(e) => setTurnTime(e.target.value)}>
+                <option value="3">TEST</option>
                 <option value="45">45 secondi</option>
                 <option value="60">1 minuto</option>
                 <option value="120">2 minuti</option>
