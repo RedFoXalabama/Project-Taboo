@@ -89,6 +89,15 @@ footer * {
     font-size: 80%;
 }
 
+footer a {
+    color: unset;
+    font-size: 1em;
+}
+
+footer a:hover {
+    color:#906de9;
+}
+
 #hasbroLogo {
     width: 100px;
     height: 100px;
