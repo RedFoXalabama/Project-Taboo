@@ -591,6 +591,9 @@ input[type=number] {
     border-radius: 15px;
     border: 0px;
     border-bottom: 4px solid #452a87;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
 
 #tabooButton:hover {
@@ -622,6 +625,9 @@ input[type=number] {
     border-radius: 15px;
     border: 0px;
     border-bottom: 4px solid #d7b701;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
 }
 
 #skipButton:hover {
@@ -653,6 +659,9 @@ input[type=number] {
     border-radius: 15px;
     border: 0px;
     border-bottom: 4px solid #47cb47;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #correctButton:hover {
