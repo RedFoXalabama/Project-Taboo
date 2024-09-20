@@ -10,7 +10,6 @@ import ChangeTurnButton from "./ChangeTurnButton";
 import NamePlayerTurn from "./NamePlayerTurn.jsx";
 import {useGameState, useCardWords, useTeamsScore} from "../scripts/store.js";
 import { getURL } from '../scripts/utility';
-import { set } from "mongoose";
 
 function MatchContainer({onHandleEndMatch}){
   //STATI PER LA GESTIONE DELLE CARTE E REGOLE

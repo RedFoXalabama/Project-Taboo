@@ -2,7 +2,7 @@
 ./node_modules
 
 # Node Modules FRONTEND
-./project-taboo/node_modules
+./Frontend/node_modules
 
 # Dist
-./project-taboo/dist
+./Frontend/dist

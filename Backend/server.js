@@ -19,7 +19,7 @@ if (isDev) { //Se è in ambiente di sviluppo, disabilita la protezione CORS poic
   app.use(cors());
 }
 app.use(express.json());
-app.use(express.static("project-taboo/dist" , {index: "index.html"})); //Serve la cartella dist come statica, frontend e backend sono sulla stessa porta
+app.use(express.static("../Frontend/dist" , {index: "index.html"})); //Serve la cartella dist come statica, frontend e backend sono sulla stessa porta
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json());
 app.use("/api/cards", cardRoutes);
